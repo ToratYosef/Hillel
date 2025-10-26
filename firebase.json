@@ -1,7 +1,7 @@
 {
   "firestore": {
     "database": "(default)",
-    "location": "nam5",
+    "location": "us-central1",
     "rules": "firestore.rules",
     "indexes": "firestore.indexes.json"
   },
@@ -9,6 +9,7 @@
     {
       "source": "functions",
       "codebase": "default",
+      "disallowLegacyRuntimeConfig": true,
       "ignore": [
         "node_modules",
         ".git",
@@ -24,12 +25,6 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
     ]
   }
 }
