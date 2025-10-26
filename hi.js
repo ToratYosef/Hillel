@@ -17,7 +17,7 @@ const db = admin.firestore();
 const referrersCollectionPath = 'referrers';
 
 // --- Configuration for the User to Upgrade ---
-const TARGET_EMAIL_TO_UPGRADE = 'JackB@ydeseniors.com';
+const TARGET_EMAIL_TO_UPGRADE = 'JackB@hillelseniors.com';
 
 /**
  * Generates the Referrer ID (RefID) based on the format:

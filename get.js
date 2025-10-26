@@ -1,7 +1,7 @@
 /**
  * Node.js script to generate referral links from a list of referrers.
  * * This script now connects to Firestore using the Firebase Admin SDK
- * and generates links in the format: "Full Name = https://ydeseniors.com/?ref=RefTag"
+ * and generates links in the format: "Full Name = https://hillelseniors.com/?ref=RefTag"
  *
  * MODIFIED to use a single 'name' field (e.g., "David Hamra") from Firestore.
  */
@@ -13,7 +13,7 @@ const admin = require('firebase-admin');
 const serviceAccount = require('./serviceAccountKey.json');
 
 // --- CONFIGURATION ---
-const BASE_DOMAIN = 'https://ydeseniors.com/';
+const BASE_DOMAIN = 'https://hillelseniors.com/';
 const REFERRAL_PARAM = '?ref=';
 
 // Initialize Firebase Admin SDK and Firestore instance
