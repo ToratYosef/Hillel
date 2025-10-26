@@ -160,12 +160,12 @@ async function sendTaxReceiptEmail(donationData, receiptType) {
     const receiptId = id || 'N/A';
 
     const mailOptions = {
-        from: `YDE Senior Fund <${mailConfig.email}>`,
+        from: `Hillel Senior Fund <${mailConfig.email}>`,
         to: email,
-        subject: `Your Tax Receipt: YDE Senior Fund Donation - ${formattedAmount}`,
+        subject: `Your Tax Receipt: Hillel Senior Fund Donation - ${formattedAmount}`,
         html: `
             <p style="font-family: sans-serif; color: #333;">Dear ${name},</p>
-            <p style="font-family: sans-serif; color: #333;">Thank you for your generous donation to the YDE Senior Fund!</p>
+            <p style="font-family: sans-serif; color: #333;">Thank you for your generous donation to the Hillel Senior Fund!</p>
             <p style="font-family: sans-serif; color: #333;">This email serves as your official tax receipt for your contribution. Please keep it for your records.</p>
             
             <table border="1" cellpadding="10" cellspacing="0" style="width:100%; max-width: 400px; border-collapse: collapse; margin-top: 20px; border-color: #ccc; font-family: sans-serif;">
@@ -176,7 +176,7 @@ async function sendTaxReceiptEmail(donationData, receiptType) {
             </table>
             
             <p style="margin-top: 20px; font-size: 0.9em; color: #666; font-family: sans-serif;">
-                The YDE Senior Fund is a registered non-profit organization. Your donation is tax-deductible to the extent allowed by law.
+                The Hillel Senior Fund is a registered non-profit organization. Your donation is tax-deductible to the extent allowed by law.
             </p>
             <p style="font-size: 0.8em; color: #999; font-family: sans-serif;">If you have any questions, please contact us.</p>
         `,
@@ -438,7 +438,7 @@ exports.convertOldTicketsToNewRaffleEntry = functions.https.onCall(async (data, 
         chargedAmount: oldAmount, // Store original amount paid (or new charged amount if balance was due and manually cleared)
         status: 'converted', // Flag new status
         timestamp: admin.firestore.FieldValue.serverTimestamp(),
-        sourceApp: 'YDE Admin Conversion Tool',
+        sourceApp: 'Hillel Admin Conversion Tool',
         referrerRefId: originalRefId || null,
         referrerUid: referrerUid || null,
         conversionSourceId: oldEntryId // Link back to the original document ID
@@ -462,7 +462,7 @@ exports.convertOldTicketsToNewRaffleEntry = functions.https.onCall(async (data, 
                 amount: donationAmount,
                 // Custom status to easily identify conversion surpluses in the donation table and trigger email
                 status: 'MANUAL_DONATED_CONVERSION_SURPLUS',
-                sourceApp: 'YDE Admin Conversion Surplus',
+                sourceApp: 'Hillel Admin Conversion Surplus',
                 referrerRefId: originalRefId || null,
                 createdAt: admin.firestore.FieldValue.serverTimestamp(),
                 conversionSourceId: oldEntryId
@@ -907,7 +907,7 @@ exports.adminResetPasswordByEmail = functions.https.onRequest((req, res) => {
  * This function handles quantity-based sales ($150 per ticket).
  */
 exports.createRolexPaymentIntent = functions.https.onCall(async (data, context) => {
-    const SOURCE_APP_TAG = 'YDE Rolex Raffle';
+    const SOURCE_APP_TAG = 'Hillel Rolex Raffle';
 
     try {
         // NEW: Sanitize inputs before processing
@@ -934,7 +934,7 @@ exports.createRolexPaymentIntent = functions.https.onCall(async (data, context) 
         const paymentIntent = await stripe.paymentIntents.create({
             amount: amountInCents,
             currency: 'usd',
-            description: `YDE Rolex Raffle - ${ticketsBought} Tickets`,
+            description: `Hillel Rolex Raffle - ${ticketsBought} Tickets`,
             // --- UPDATED PAYMENT METHOD TYPES: ADDED 'us_bank_account' AND 'link' ---
             payment_method_types: ['card', 'us_bank_account', 'link'],
             // -----------------------------------------------------------------------
@@ -987,7 +987,7 @@ exports.createRolexPaymentIntent = functions.https.onCall(async (data, context) 
  * Firebase Callable Function to create a Stripe PaymentIntent for the raffle (Split The Pot).
  */
 exports.createStripePaymentIntent = functions.https.onCall(async (data, context) => {
-    const SOURCE_APP_TAG = 'YDE Split The Pot';
+    const SOURCE_APP_TAG = 'Hillel Split The Pot';
 
     try {
         // NEW: Sanitize inputs before processing
@@ -1009,7 +1009,7 @@ exports.createStripePaymentIntent = functions.https.onCall(async (data, context)
         const paymentIntent = await stripe.paymentIntents.create({
             amount: amountInCents,
             currency: 'usd',
-            description: `YDE Split The Pot - ${cleanedTicketsBought} Tickets`,
+            description: `Hillel Split The Pot - ${cleanedTicketsBought} Tickets`,
             // --- UPDATED PAYMENT METHOD TYPES: ADDED 'us_bank_account' AND 'link' ---
             payment_method_types: ['card', 'us_bank_account', 'link'],
             // -----------------------------------------------------------------------
@@ -1053,7 +1053,7 @@ exports.createStripePaymentIntent = functions.https.onCall(async (data, context)
  * Firebase Callable Function to create a Stripe PaymentIntent for a general donation.
  */
 exports.createDonationPaymentIntent = functions.https.onCall(async (data, context) => {
-    const SOURCE_APP_TAG = 'YDE Donation';
+    const SOURCE_APP_TAG = 'Hillel Donation';
 
     try {
         // NEW: Sanitize inputs before processing
@@ -1074,7 +1074,7 @@ exports.createDonationPaymentIntent = functions.https.onCall(async (data, contex
         const paymentIntent = await stripe.paymentIntents.create({
             amount: amountInCents,
             currency: 'usd',
-            description: `YDE Donation`,
+            description: `Hillel Donation`,
             // --- UPDATED PAYMENT METHOD TYPES: ADDED 'us_bank_account' AND 'link' ---
             payment_method_types: ['card', 'us_bank_account', 'link'],
             // -----------------------------------------------------------------------
@@ -1212,7 +1212,7 @@ exports.stripeWebhook = functions.https.onRequest(async (req, res) => {
                     chargedAmount: amountCharged, // Store actual charged amount
                     status: 'paid',
                     timestamp: admin.firestore.FieldValue.serverTimestamp(),
-                    sourceApp: sourceApp || 'YDE Rolex Raffle (Webhook)',
+                    sourceApp: sourceApp || 'Hillel Rolex Raffle (Webhook)',
                     referrerRefId: referrerRefId || null,
                     referrerUid: referrerUid || null // Store UID for easier admin filtering
                 });
@@ -1240,7 +1240,7 @@ exports.stripeWebhook = functions.https.onRequest(async (req, res) => {
                     paymentMethod: 'Stripe',
                     timestamp: admin.firestore.FieldValue.serverTimestamp(),
                     entryType: 'stripe',
-                    sourceApp: sourceApp || 'YDE Split The Pot (Webhook)'
+                    sourceApp: sourceApp || 'Hillel Split The Pot (Webhook)'
                 });
 
 
@@ -1269,7 +1269,7 @@ exports.stripeWebhook = functions.https.onRequest(async (req, res) => {
                     amountPaid: amountCharged, // Store actual charged amount for PI tracking
                     webhookProcessed: true,
                     updatedAt: admin.firestore.FieldValue.serverTimestamp(),
-                    sourceApp: sourceApp || 'YDE Donation (Webhook)'
+                    sourceApp: sourceApp || 'Hillel Donation (Webhook)'
                     // The referrerRefId is already in the PI doc from the callable function
                 });
 
@@ -1302,7 +1302,7 @@ exports.stripeWebhook = functions.https.onRequest(async (req, res) => {
                         phoneNumber: phone,
                         amountPaid: amountForSaleRecord, // Store fee-excluded amount (now cleaned)
                         updatedAt: admin.firestore.FieldValue.serverTimestamp(),
-                        sourceApp: sourceApp || 'YDE Rolex Raffle (Webhook)',
+                        sourceApp: sourceApp || 'Hillel Rolex Raffle (Webhook)',
                         referrerRefId: referrerRefId || null
                     });
 
@@ -1342,7 +1342,7 @@ exports.stripeWebhook = functions.https.onRequest(async (req, res) => {
  * FIX: Now requires authentication and performs a one-time claim check.
  */
 exports.claimSpinTicket = functions.https.onCall(async (data, context) => {
-    const SOURCE_APP_TAG = 'YDE Free Spin Claim';
+    const SOURCE_APP_TAG = 'Hillel Free Spin Claim';
 
     // --- FIX 1: Require Authentication (Anonymous or credentialed) ---
     if (!context.auth) {
@@ -1738,7 +1738,7 @@ exports.recalculateRaffleTotals = functions.https.onCall(async (data, context) =
  * Note: Assumes entryType will be passed as 'raffle' (for Split Pot) or 'rolex_raffle'
  */
 exports.addManualSale = functions.https.onCall(async (data, context) => {
-    const SOURCE_APP_TAG = 'YDE Manual Sale';
+    const SOURCE_APP_TAG = 'Hillel Manual Sale';
 
     if (!isAdmin(context)) {
         throw new functions.https.HttpsError('permission-denied', 'You must be an admin to add a manual entry.');
@@ -1871,7 +1871,7 @@ exports.addManualSale = functions.https.onCall(async (data, context) => {
  * Requires Super Admin role.
  */
 exports.addManualDonation = functions.https.onCall(async (data, context) => {
-    const SOURCE_APP_TAG = 'YDE Manual Donation';
+    const SOURCE_APP_TAG = 'Hillel Manual Donation';
 
     if (!isSuperAdmin(context)) {
         throw new functions.https.HttpsError('permission-denied', 'You must be a Super Admin to add a manual donation.');
