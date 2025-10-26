@@ -12,11 +12,11 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Track your contributions and see who is leading the way in supporting the YDE Senior Fund.">
-    <meta name="keywords" content="YDE, Senior Fund, Fundraising, Leaderboard">
+    <meta name="description" content="Track your contributions and see who is leading the way in supporting the Hillel Senior Fund.">
+    <meta name="keywords" content="Hillel, Senior Fund, Fundraising, Leaderboard">
     <meta name="author" content="Saul Setton"> 
     <link rel="icon" type="image/png" href="/favicon/favicon.jpeg">
-    <title>YDE Fundraising Leaderboard</title>
+    <title>Hillel Fundraising Leaderboard</title>
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Load Lucide Icons (for arrows) -->
@@ -33,7 +33,7 @@
                 extend: {
                     colors: {
                         'primary-dark': '#0f172a', // slate-950
-                        'accent-yellow': '#facc15', // yellow-400
+                        'accent-sky': '#38bdf8', // sky-400
                         'card-dark': '#1f2937', // gray-800 (used for list items)
                         'secondary-green': '#10b981', // Emerald Green
                         'danger-red': '#ef4444', // Red
@@ -126,17 +126,17 @@
         <nav class="container mx-auto flex justify-between items-center flex-wrap md:flex-nowrap">
             <div class="flex items-center justify-between w-full md:w-auto">
                 <a href="/" class="flex items-center space-x-2">
-                    <img src="https://raw.githubusercontent.com/ToratYosef/ToratYosef..github.io/refs/heads/main/assets/logos.jpeg" alt="YDE Logo" class="h-14 sm:h-16 md:h-20 w-auto rounded-full ring-2 ring-yellow-400 p-1">
+                    <img src="https://raw.githubusercontent.com/ToratYosef/ToratYosef..github.io/refs/heads/main/assets/logos.jpeg" alt="Hillel Logo" class="h-14 sm:h-16 md:h-20 w-auto rounded-full ring-2 ring-sky-400 p-1">
                 </a>
                 <button id="menu-toggle" class="md:hidden text-white focus:outline-none" aria-label="Toggle menu">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                 </button>
             </div>
             <ul id="main-menu" class="hidden md:flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-8 text-base font-semibold w-full md:w-auto mt-4 md:mt-0">
-                <li><a href="/split-the-pot/" class="text-white hover:text-yellow-400 transition-colors duration-300 block">Split the Pot</a></li>
-                <li><a href="/rolex-raffle/" class="text-white hover:text-yellow-400 transition-colors duration-300 block">Rolex Raffle</a></li>
-                <li><a href="/leaderboard/" class="text-white hover:text-yellow-400 transition-colors duration-300 block">Leaderboard</a></li>
-                <li><a href="/donate/" class="py-2 px-4 rounded-full bg-yellow-400 text-black hover:bg-yellow-500 transition-colors duration-300 font-bold block">Donate Now</a></li>
+                <li><a href="/split-the-pot/" class="text-white hover:text-sky-400 transition-colors duration-300 block">Split the Pot</a></li>
+                <li><a href="/rolex-raffle/" class="text-white hover:text-sky-400 transition-colors duration-300 block">Rolex Raffle</a></li>
+                <li><a href="/leaderboard/" class="text-white hover:text-sky-400 transition-colors duration-300 block">Leaderboard</a></li>
+                <li><a href="/donate/" class="py-2 px-4 rounded-full bg-sky-400 text-black hover:bg-sky-500 transition-colors duration-300 font-bold block">Donate Now</a></li>
             </ul>
         </nav>
     </header>
@@ -149,7 +149,7 @@
             <!-- Sub-Header and Search Section -->
             <div class="mb-8 p-6 rounded-2xl">
                 <h1 class="font-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 text-center">
-                    YDE Fundraising Leaderboard
+                    Hillel Fundraising Leaderboard
                 </h1>
                 <p class="text-center text-gray-400 mb-6 text-lg">
                     See who's leading the charge for the Senior Fund! Data updates in real-time.
@@ -173,7 +173,7 @@
                         type="text"
                         id="search-input"
                         placeholder="Search by User Name..."
-                        class="w-full pl-10 pr-4 py-3 border border-gray-700 bg-gray-800 text-white rounded-full focus:ring-2 focus:ring-accent-yellow focus:border-accent-yellow transition duration-150"
+                        class="w-full pl-10 pr-4 py-3 border border-gray-700 bg-gray-800 text-white rounded-full focus:ring-2 focus:ring-accent-sky focus:border-accent-sky transition duration-150"
                     >
                 </div>
             </div>
@@ -238,7 +238,7 @@
             <div id="leaderboard-list" class="space-y-4">
                 <!-- Loading State -->
                 <div class="flex flex-col items-center justify-center p-12 bg-gray-800 rounded-xl shadow-lg">
-                    <i data-lucide="loader-circle" class="w-8 h-8 text-accent-yellow animate-spin mb-3"></i>
+                    <i data-lucide="loader-circle" class="w-8 h-8 text-accent-sky animate-spin mb-3"></i>
                     <p class="text-gray-400">Loading real-time leaderboard data...</p>
                 </div>
             </div>
@@ -248,33 +248,33 @@
     <!-- Footer (UPDATED with full contact details) -->
     <footer class="bg-black/60 py-8 mt-auto shadow-[0_-5px_15px_rgba(0,0,0,0.5)] border-t border-slate-800">
         <div class="container mx-auto px-4 text-center">
-            <h3 class="bebas-neue text-4xl font-bold text-yellow-400 mb-6 border-b border-yellow-400/20 pb-2 inline-block">Contact</h3>
+            <h3 class="bebas-neue text-4xl font-bold text-sky-400 mb-6 border-b border-sky-400/20 pb-2 inline-block">Contact</h3>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8 text-gray-300 mb-8">
                 <!-- Jack B. -->
                 <div class="bg-slate-800/50 p-4 rounded-lg">
                     <p class="font-bold text-white text-xl mb-1">Jack B.</p>
-                    <a href="tel:+13476750226" class="hover:text-yellow-400 transition-colors">+1 (347) 675-0226</a>
+                    <a href="tel:+13476750226" class="hover:text-sky-400 transition-colors">+1 (347) 675-0226</a>
                 </div>
                 <!-- Daniel K. -->
                 <div class="bg-slate-800/50 p-4 rounded-lg">
                     <p class="font-bold text-white text-xl mb-1">Daniel K.</p>
-                    <a href="tel:+19178580904" class="hover:text-yellow-400 transition-colors">+1 (917) 858-0904</a>
+                    <a href="tel:+19178580904" class="hover:text-sky-400 transition-colors">+1 (917) 858-0904</a>
                 </div>
                 <!-- Saul S. -->
                 <div class="bg-slate-800/50 p-4 rounded-lg">
                     <p class="font-bold text-white text-xl mb-1">Saul S.</p>
-                    <a href="tel:+19295845753" class="hover:text-yellow-400 transition-colors">+1 (929) 584-5753</a>
+                    <a href="tel:+19295845753" class="hover:text-sky-400 transition-colors">+1 (929) 584-5753</a>
                 </div>
                 <!-- David H. -->
                <div class="bg-slate-800/50 p-4 rounded-lg">
                     <p class="font-bold text-white text-xl mb-1">David H.</p>
-                    <a href="tel:+16802340314" class="hover:text-yellow-400 transition-colors">+1 (680) 234-0314</a>
+                    <a href="tel:+16802340314" class="hover:text-sky-400 transition-colors">+1 (680) 234-0314</a>
                 </div>
             </div>
             <p class="text-sm text-gray-500 mt-8">
-                &copy; 2026 YDE Senior Fund. All Rights Reserved.<br/>
+                &copy; 2026 Hillel Senior Fund. All Rights Reserved.<br/>
                 Ranking is based on total money raised.<br/>
-                Website created by <a href="https://setton-source-68177.web.app" target="_blank" class="text-yellow-400 hover:text-yellow-300 transition-colors">Saul Setton</a>
+                Website created by <a href="https://setton-source-68177.web.app" target="_blank" class="text-sky-400 hover:text-sky-300 transition-colors">Saul Setton</a>
             </p>
         </div>
     </footer>
@@ -312,12 +312,12 @@
 
         // Hardcoded Firebase configuration provided by the user
         const firebaseConfig = {
-            apiKey: "AIzaSyAT539nr_s2OxHPTAmkxwMpaWt-FiDTgQs",
-            authDomain: "yderaffle.firebaseapp.com",
-            projectId: "yderaffle",
-            storageBucket: "yderaffle.firebasestorage.app",
-            messagingSenderId: "967768309102",
-            appId: "1:967768309102:web:c89d61a747e8cb941f557f"
+            apiKey: "AIzaSyBYh2I_TOn9xGW_wxqlfLXpv9-KP501ca0",
+            authDomain: "hillel-raffle.firebaseapp.com",
+            projectId: "hillel-raffle",
+            storageBucket: "hillel-raffle.firebasestorage.app",
+            messagingSenderId: "1095480662289",
+            appId: "1:1095480662289:web:47b777735eecafb236d4b0"
         };
         
         // Safely retrieve environment variables
@@ -643,7 +643,7 @@
                     if (key === currentSortKey) {
                         // Add up or down arrow based on direction
                         const iconName = sortDirection === 'asc' ? 'arrow-up' : 'arrow-down';
-                        iconContainer.innerHTML = `<i data-lucide="${iconName}" class="w-4 h-4 ml-1 text-accent-yellow"></i>`;
+                        iconContainer.innerHTML = `<i data-lucide="${iconName}" class="w-4 h-4 ml-1 text-accent-sky"></i>`;
                         lucide.createIcons(); // Redraw lucide icons
                     }
                 }
@@ -797,8 +797,8 @@
 
                 // Apply special styling for the top 3
                 if (item.rank === 1) {
-                    rankStyle = 'text-accent-yellow font-bold rank-glow-1';
-                    borderStyle = 'border-accent-yellow/70';
+                    rankStyle = 'text-accent-sky font-bold rank-glow-1';
+                    borderStyle = 'border-accent-sky/70';
                 } else if (item.rank === 2) {
                     rankStyle = 'text-gray-300 font-bold rank-glow-2';
                     borderStyle = 'border-gray-300/70';

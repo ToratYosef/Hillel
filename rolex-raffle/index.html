@@ -12,11 +12,11 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Support the YDE Senior Fund - Help us create unforgettable experiences for the Class of 2026 with your generous donations.">
-    <meta name="keywords" content="YDE, Senior Fund, Donate, Class of 2026">
+    <meta name="description" content="Support the Hillel Senior Fund - Help us create unforgettable experiences for the Class of 2026 with your generous donations.">
+    <meta name="keywords" content="Hillel, Senior Fund, Donate, Class of 2026">
     <meta name="author" content="Saul Setton">
     <link rel="icon" type="image/png" href="/favicon/favicon.jpeg">
-    <title>YDE Senior Fund - Rolex Raffle</title>
+    <title>Hillel Senior Fund - Rolex Raffle</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -82,7 +82,7 @@
             justify-content: center;
             overflow: hidden;
             position: relative; 
-            border: 2px solid #fde047; 
+            border: 2px solid #38bdf8; 
         }
         @media (min-width: 768px) {
             .digit-box {
@@ -92,7 +92,7 @@
         }
         
         .digit-text {
-            color: #fde047; 
+            color: #38bdf8; 
             font-size: 3.5rem; 
             line-height: 1; 
             font-family: 'Bebas Neue', sans-serif;
@@ -117,8 +117,8 @@
             transition: all 0.2s;
         }
         #cover-fee-checkbox:checked {
-            background-color: #fde047; /* yellow-400 */
-            border-color: #fde047;
+            background-color: #38bdf8; /* sky-400 */
+            border-color: #38bdf8;
         }
         #cover-fee-checkbox:checked::after {
             content: '✓';
@@ -161,23 +161,23 @@
 
     <!-- Global Loading Overlay -->
     <div id="globalLoadingOverlay" class="fixed inset-0 z-[100] bg-slate-900/80 backdrop-blur-sm flex flex-col items-center justify-center gap-4 hidden">
-        <div class="spinner w-12 h-12 border-4 border-t-4 border-yellow-400 border-opacity-20 rounded-full animate-spin"></div>
+        <div class="spinner w-12 h-12 border-4 border-t-4 border-sky-400 border-opacity-20 rounded-full animate-spin"></div>
         <p id="globalSpinnerText" class="text-white text-xl font-semibold">Loading...</p>
     </div>
 
     <!-- Custom Popup Modal -->
     <div id="customPopupOverlay" class="fixed inset-0 z-[101] bg-black/75 flex items-center justify-center p-4 hidden">
         <div id="customPopup" class="bg-gray-800 p-8 rounded-xl shadow-2xl max-w-sm w-full text-center scale-95 transition-all duration-300">
-            <h2 id="popupTitle" class="bebas-neue text-3xl font-bold text-yellow-400 mb-4"></h2>
+            <h2 id="popupTitle" class="bebas-neue text-3xl font-bold text-sky-400 mb-4"></h2>
             <p id="popupMessage" class="text-gray-300 text-lg mb-6"></p>
-            <button id="popupCloseButton" class="w-full py-3 rounded-full bg-yellow-400 text-black font-bold hover:bg-yellow-500 transition-colors">OK</button>
+            <button id="popupCloseButton" class="w-full py-3 rounded-full bg-sky-400 text-black font-bold hover:bg-sky-500 transition-colors">OK</button>
         </div>
     </div>
 
     <!-- Prize Detail Modal -->
     <div id="prizeModal" class="modal-overlay hidden" onclick="hidePrizeModal(event)">
         <div class="modal-content w-full max-w-3xl scale-100" onclick="event.stopPropagation()">
-            <h2 class="bebas-neue text-4xl font-bold text-yellow-400 mb-4 text-left">GRAND PRIZE DETAILS</h2>
+            <h2 class="bebas-neue text-4xl font-bold text-sky-400 mb-4 text-left">GRAND PRIZE DETAILS</h2>
             <div class="md:flex md:space-x-6">
                 <div class="md:w-1/2 flex items-center justify-center mb-4 md:mb-0">
                     <img src="https://media.rolex.com/image/upload/q_auto:eco/f_auto/t_v7-majesty/c_limit,w_1600/v1/catalogue/2025/upright-c/m336934-0002" 
@@ -186,12 +186,12 @@
                 </div>
                 <div class="md:w-1/2 text-left">
                     <p class="bebas-neue text-3xl text-white mb-2">Rolex Sky-Dweller or Cash</p>
-                    <p class="text-2xl font-semibold text-yellow-400 mb-6">Choose $26,000 Cash or Watch</p>
+                    <p class="text-2xl font-semibold text-sky-400 mb-6">Choose $26,000 Cash or Watch</p>
                     <p class="text-gray-300 leading-relaxed mb-6">
                         The grand prize winner gets to choose between the prestigious Rolex Oyster Perpetual Sky-Dweller (or similar luxury timepiece) 
                         or a substantial cash prize of $26,000. The choice is yours!
                     </p>
-                    <button onclick="hidePrizeModal();" class="w-full py-3 rounded-full bg-yellow-400 text-slate-950 font-bold hover:bg-yellow-500 transition-colors duration-300">
+                    <button onclick="hidePrizeModal();" class="w-full py-3 rounded-full bg-sky-400 text-slate-950 font-bold hover:bg-sky-500 transition-colors duration-300">
                         Enter Raffle Now
                     </button>
                 </div>
@@ -206,7 +206,7 @@
             <div class="flex items-center justify-between w-full md:w-auto">
                 <!-- Logo -->
                 <a href="/" class="flex items-center space-x-2">
-                    <img src="https://raw.githubusercontent.com/ToratYosef/ToratYosef..github.io/refs/heads/main/assets/logos.jpeg" alt="YDE Logo" class="h-14 sm:h-16 md:h-20 w-auto rounded-full ring-2 ring-yellow-400 p-1">
+                    <img src="https://raw.githubusercontent.com/ToratYosef/ToratYosef..github.io/refs/heads/main/assets/logos.jpeg" alt="Hillel Logo" class="h-14 sm:h-16 md:h-20 w-auto rounded-full ring-2 ring-sky-400 p-1">
                 </a>
                 <!-- Mobile Menu Toggle Button -->
                 <button id="menu-toggle" class="md:hidden text-white focus:outline-none" aria-label="Toggle menu">
@@ -216,10 +216,10 @@
 
             <!-- Navigation Links -->
             <ul id="main-menu" class="hidden md:flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-8 text-base font-semibold w-full md:w-auto mt-4 md:mt-0">
-                <li><a href="/split-the-pot/" class="text-white hover:text-yellow-400 transition-colors duration-300 block">Split the Pot</a></li>
-                <li><a href="/rolex-raffle/" class="text-white hover:text-yellow-400 transition-colors duration-300 block">Rolex Raffle</a></li> 
-                <li><a href="/leaderboard/" class="text-white hover:text-yellow-400 transition-colors duration-300 block">Leaderboard</a></li>
-                <li><a href="/donate/" class="py-2 px-4 rounded-full bg-yellow-400 text-black hover:bg-yellow-500 transition-colors duration-300 font-bold block">Donate Now</a></li>
+                <li><a href="/split-the-pot/" class="text-white hover:text-sky-400 transition-colors duration-300 block">Split the Pot</a></li>
+                <li><a href="/rolex-raffle/" class="text-white hover:text-sky-400 transition-colors duration-300 block">Rolex Raffle</a></li> 
+                <li><a href="/leaderboard/" class="text-white hover:text-sky-400 transition-colors duration-300 block">Leaderboard</a></li>
+                <li><a href="/donate/" class="py-2 px-4 rounded-full bg-sky-400 text-black hover:bg-sky-500 transition-colors duration-300 font-bold block">Donate Now</a></li>
             </ul>
         </nav>
     </header>
@@ -238,14 +238,14 @@
 
                 <!-- Prize Display Section (Smaller, clickable) -->
                 <div class="mb-12 max-w-sm mx-auto">
-                    <h2 class="bebas-neue text-3xl font-bold text-yellow-400 mb-4">GRAND PRIZE: ROLEX OR $26,000</h2>
+                    <h2 class="bebas-neue text-3xl font-bold text-sky-400 mb-4">GRAND PRIZE: ROLEX OR $26,000</h2>
                     <div class="bg-slate-700/60 p-4 rounded-xl shadow-lg cursor-pointer transform transition duration-300 hover:scale-[1.02]" onclick="showPrizeModal()">
                         <!-- New Prize Image -->
                         <img src="https://media.rolex.com/image/upload/q_auto:eco/f_auto/t_v7-majesty/c_limit,w_1600/v1/catalogue/2025/upright-c/m336934-0002" 
                             onerror="this.onerror=null; this.src='https://placehold.co/800x450/1e293b/fde047?text=Rolex+Grand+Prize';"
                             alt="Rolex Oyster Perpetual Sky-Dweller" class="w-full h-auto object-contain rounded-lg shadow-xl">
                         <p class="text-gray-300 text-lg font-semibold">Rolex Sky-Dweller or $26,000 Cash</p>
-                        <button class="mt-4 py-2 px-4 rounded-full bg-yellow-400 text-black font-bold hover:bg-yellow-500 transition-colors w-full">
+                        <button class="mt-4 py-2 px-4 rounded-full bg-sky-400 text-black font-bold hover:bg-sky-500 transition-colors w-full">
                             See Prize Details
                         </button>
                     </div>
@@ -260,40 +260,40 @@
                         <!-- Full Name (Using solid dark input color: bg-[#3d4554]) -->
                         <div id="raffle-name-container">
                             <input type="text" id="raffle-name" name="name" placeholder="Full Name" 
-                                class="w-full py-3 px-4 rounded-lg bg-[#3d4554] text-white placeholder-gray-400 border-none focus:outline-none focus:ring-2 focus:ring-yellow-400 transition-all duration-300" required>
+                                class="w-full py-3 px-4 rounded-lg bg-[#3d4554] text-white placeholder-gray-400 border-none focus:outline-none focus:ring-2 focus:ring-sky-400 transition-all duration-300" required>
                         </div>
                         
                         <!-- Email Address (Using solid dark input color: bg-[#3d4554]) -->
                         <div id="raffle-email-container">
                             <input type="email" id="raffle-email" name="email" placeholder="Email Address" 
-                                class="w-full py-3 px-4 rounded-lg bg-[#3d4554] text-white placeholder-gray-400 border-none focus:outline-none focus:ring-2 focus:ring-yellow-400 transition-all duration-300" required>
+                                class="w-full py-3 px-4 rounded-lg bg-[#3d4554] text-white placeholder-gray-400 border-none focus:outline-none focus:ring-2 focus:ring-sky-400 transition-all duration-300" required>
                         </div>
                         
                         <!-- Phone Number (Using solid dark input color: bg-[#3d4554]) -->
                         <div id="raffle-phone-container">
                             <input type="tel" id="raffle-phone" name="phone" placeholder="Phone Number" 
-                                class="w-full py-3 px-4 rounded-lg bg-[#3d4554] text-white placeholder-gray-400 border-none focus:outline-none focus:ring-2 focus:ring-yellow-400 transition-all duration-300" required>
+                                class="w-full py-3 px-4 rounded-lg bg-[#3d4554] text-white placeholder-gray-400 border-none focus:outline-none focus:ring-2 focus:ring-sky-400 transition-all duration-300" required>
                         </div>
                         
                         <!-- Ticket Quantity Input (UPDATED FOR WIDE INPUT AND +/- BUTTONS) -->
                         <div id="raffle-controls-container" class="flex items-center justify-between gap-4 pt-4">
-                            <label class="font-bold text-yellow-400 bebas-neue text-lg flex-shrink-0">TICKETS:</label>
+                            <label class="font-bold text-sky-400 bebas-neue text-lg flex-shrink-0">TICKETS:</label>
                             
                             <!-- Quantity Controls -->
                             <div class="flex items-center justify-center gap-2 w-full"> 
                                 <!-- Minus Button -->
                                 <button id="decrement-ticket" type="button" 
-                                    class="flex w-12 h-12 bg-yellow-400 text-black rounded-full items-center justify-center font-bold text-2xl hover:bg-yellow-500 transition-colors flex-shrink-0 disabled:opacity-50 disabled:cursor-not-allowed">
+                                    class="flex w-12 h-12 bg-sky-400 text-black rounded-full items-center justify-center font-bold text-2xl hover:bg-sky-500 transition-colors flex-shrink-0 disabled:opacity-50 disabled:cursor-not-allowed">
                                     &minus;
                                 </button>
                                 
                                 <!-- Input Field (Now w-full inside this inner flex container) -->
                                 <input type="number" id="ticket-quantity" name="quantity" value="1" min="1" max="999999" 
-                                    class="w-full h-12 text-center py-3 px-4 rounded-lg bg-[#3d4554] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition-all duration-300 text-xl font-bold" required>
+                                    class="w-full h-12 text-center py-3 px-4 rounded-lg bg-[#3d4554] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-sky-400 transition-all duration-300 text-xl font-bold" required>
                                 
                                 <!-- Plus Button -->
                                 <button id="increment-ticket" type="button" 
-                                    class="flex w-12 h-12 bg-yellow-400 text-black rounded-full items-center justify-center font-bold text-2xl hover:bg-yellow-500 transition-colors flex-shrink-0">
+                                    class="flex w-12 h-12 bg-sky-400 text-black rounded-full items-center justify-center font-bold text-2xl hover:bg-sky-500 transition-colors flex-shrink-0">
                                     +
                                 </button>
                             </div>
@@ -301,19 +301,19 @@
                         
                         <!-- Processing Fee Checkbox (Removed 'checked' attribute and set alignment) -->
                         <div id="raffle-fee-checkbox-container" class="flex items-center pt-2 justify-start">
-                            <input type="checkbox" id="cover-fee-checkbox" class="h-4 w-4 focus:ring-yellow-500">
+                            <input type="checkbox" id="cover-fee-checkbox" class="h-4 w-4 focus:ring-sky-500">
                             <label for="cover-fee-checkbox" class="ml-3 text-sm text-gray-300">I would like to cover the processing fees</label>
                         </div>
 
                         <!-- Calculated Total -->
                         <div id="raffle-total-display-container">
                             <p class="text-3xl font-extrabold pt-4 text-center bebas-neue">
-                                TOTAL: <span id="total-amount-display" class="text-yellow-400 ml-2">$150.00</span>
+                                TOTAL: <span id="total-amount-display" class="text-sky-400 ml-2">$150.00</span>
                             </p>
                         </div>
 
                         <!-- Proceed to Payment Button -->
-                        <button id="raffle-proceed-to-payment" class="w-full py-4 rounded-full bg-yellow-400 hover:bg-yellow-500 text-black text-xl font-bold transition-colors duration-300 relative overflow-hidden mt-6 shadow-xl">
+                        <button id="raffle-proceed-to-payment" class="w-full py-4 rounded-full bg-sky-400 hover:bg-sky-500 text-black text-xl font-bold transition-colors duration-300 relative overflow-hidden mt-6 shadow-xl">
                             <span class="button-text">Proceed to Payment</span>
                             <div class="spinner button-spinner absolute inset-0 m-auto w-8 h-8 border-4 border-t-4 border-black border-opacity-20 rounded-full hidden"></div>
                         </button>
@@ -324,7 +324,7 @@
                            <h2 class="bebas-neue text-3xl font-bold text-white mb-4">Payment Details</h2>
                         <div id="raffle-payment-element-container"></div>
                         <!-- Stripe Pay Button -->
-                        <button id="raffle-stripe-pay-button" class="w-full py-3 mt-4 rounded-full bg-yellow-400 hover:bg-yellow-500 text-black font-bold transition-colors duration-300 hidden">
+                        <button id="raffle-stripe-pay-button" class="w-full py-3 mt-4 rounded-full bg-sky-400 hover:bg-sky-500 text-black font-bold transition-colors duration-300 hidden">
                             <span class="button-text">Pay Now</span>
                             <div class="spinner button-spinner absolute inset-0 m-auto w-8 h-8 border-4 border-t-4 border-black border-opacity-20 rounded-full hidden"></div>
                         </button>
@@ -334,7 +334,7 @@
 
                 <!-- Live Counter (NEW LOCATION: bottom of the glass panel) -->
                 <div class="pt-12">
-                    <h2 class="bebas-neue text-3xl font-bold text-yellow-400 mb-4" id="ticketsSoldTitle">TICKETS SOLD: 0</h2>
+                    <h2 class="bebas-neue text-3xl font-bold text-sky-400 mb-4" id="ticketsSoldTitle">TICKETS SOLD: 0</h2>
                     <!-- Scoreboard Container (4 Digits) -->
                     <div id="ticketsSoldDisplay" class="flex justify-center space-x-2 md:space-x-3 lg:space-x-4">
                         <div id="digit-thousands" class="digit-box"><span class="digit-text">0</span></div>
@@ -351,33 +351,33 @@
     <!-- Footer -->
     <footer class="bg-black/60 py-8 mt-auto shadow-[0_-5px_15px_rgba(0,0,0,0.5)] border-t border-slate-800">
         <div class="container mx-auto px-4 text-center">
-            <h3 class="bebas-neue text-4xl font-bold text-yellow-400 mb-6 border-b border-yellow-400/20 pb-2 inline-block">Contact</h3>
+            <h3 class="bebas-neue text-4xl font-bold text-sky-400 mb-6 border-b border-sky-400/20 pb-2 inline-block">Contact</h3>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8 text-gray-300 mb-8">
                 <!-- Jack B. -->
                 <div class="bg-slate-800/50 p-4 rounded-lg">
                     <p class="font-bold text-white text-xl mb-1">Jack B.</p>
-                    <a href="tel:+13476750226" class="hover:text-yellow-400 transition-colors">+1 (347) 675-0226</a>
+                    <a href="tel:+13476750226" class="hover:text-sky-400 transition-colors">+1 (347) 675-0226</a>
                 </div>
                 <!-- Daniel K. -->
                 <div class="bg-slate-800/50 p-4 rounded-lg">
                     <p class="font-bold text-white text-xl mb-1">Daniel K.</p>
-                    <a href="tel:+19178580904" class="hover:text-yellow-400 transition-colors">+1 (917) 858-0904</a>
+                    <a href="tel:+19178580904" class="hover:text-sky-400 transition-colors">+1 (917) 858-0904</a>
                 </div>
                 <!-- Saul S. -->
                 <div class="bg-slate-800/50 p-4 rounded-lg">
                     <p class="font-bold text-white text-xl mb-1">Saul S.</p>
-                    <a href="tel:+19295845753" class="hover:text-yellow-400 transition-colors">+1 (929) 584-5753</a>
+                    <a href="tel:+19295845753" class="hover:text-sky-400 transition-colors">+1 (929) 584-5753</a>
                 </div>
                 <!-- David H. (Restored and formatted) -->
                <div class="bg-slate-800/50 p-4 rounded-lg">
                     <p class="font-bold text-white text-xl mb-1">David H.</p>
-                    <a href="tel:+16802340314" class="hover:text-yellow-400 transition-colors">+1 (680) 234-0314</a>
+                    <a href="tel:+16802340314" class="hover:text-sky-400 transition-colors">+1 (680) 234-0314</a>
                 </div>
             </div>
             <p class="text-sm text-gray-500 mt-8">
-                &copy; 2026 YDE Senior Fund. All Rights Reserved.<br/>
+                &copy; 2026 Hillel Senior Fund. All Rights Reserved.<br/>
                 <!-- LINK FIXED HERE -->
-                Website created by <a href="https://setton-source-68177.web.app" target="_blank" class="text-yellow-400 hover:text-yellow-300 transition-colors">Saul Setton</a>
+                Website created by <a href="https://setton-source-68177.web.app" target="_blank" class="text-sky-400 hover:text-sky-300 transition-colors">Saul Setton</a>
             </p>
         </div>
     </footer>
@@ -399,12 +399,12 @@
         const initialAuthToken = null;
 
         const firebaseConfig = {
-            apiKey: "AIzaSyAT539nr_s2OxHPTAmkxwMpaWt-FiDTgQs", // Placeholder Key
-            authDomain: "yderaffle.firebaseapp.com",
-            projectId: "yderaffle",
-            storageBucket: "yderaffle.firebasestorage.app",
-            messagingSenderId: "967768309102",
-            appId: "1:967768309102:web:c89d61a747e8cb941f557f"
+            apiKey: "AIzaSyBYh2I_TOn9xGW_wxqlfLXpv9-KP501ca0", // Placeholder Key
+            authDomain: "hillel-raffle.firebaseapp.com",
+            projectId: "hillel-raffle",
+            storageBucket: "hillel-raffle.firebasestorage.app",
+            messagingSenderId: "1095480662289",
+            appId: "1:1095480662289:web:47b777735eecafb236d4b0"
         };
         
         // Initialize Firebase instances
@@ -718,7 +718,7 @@
                     // Stripe elements initialization
                     elements = stripe.elements({ 
                         clientSecret: clientSecret, 
-                        appearance: { theme: 'night', variables: { colorPrimary: '#fde047' } },
+                        appearance: { theme: 'night', variables: { colorPrimary: '#38bdf8' } },
                         fonts: [{ cssSrc: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap' }] 
                     });
                     const paymentElement = elements.create('payment');

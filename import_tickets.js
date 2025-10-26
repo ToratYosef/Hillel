@@ -1,6 +1,6 @@
 // --- Instructions ---
 // 1. Place your downloaded Firebase service account key file in the same directory and name it "serviceAccountKey.json".
-// 2. Make sure the CSV file is in the same directory and is named "Copy of YDE Split The Pot 2026 - Sheet1 (1).csv".
+// 2. Make sure the CSV file is in the same directory and is named "Copy of Hillel Split The Pot 2026 - Sheet1 (1).csv".
 // 3. To run this script, open your terminal and type: node import_tickets_and_update_referrers.js
 
 const admin = require('firebase-admin');
@@ -75,7 +75,7 @@ async function runImport() {
     await loadReferrerLookupMap();
 
     // NOTE: The filename in the ReadStream is hardcoded, ensure it matches your file name.
-    fs.createReadStream('Copy of YDE Split The Pot 2026 - Sheet1 (1).csv')
+    fs.createReadStream('Copy of Hillel Split The Pot 2026 - Sheet1 (1).csv')
       .pipe(csv())
       .on('headers', (headers) => {
         // Find the correct column names using a more robust search
@@ -157,7 +157,7 @@ async function runImport() {
             referrerUid: referrerUid, 
             referrerName: referrerName,
             entryType: 'imported',
-            sourceApp: 'YDE Historical Import'
+            sourceApp: 'Hillel Historical Import'
           };
 
           // Create a unique key for deduplication

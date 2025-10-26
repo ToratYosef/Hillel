@@ -12,18 +12,18 @@
 </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta description="Admin dashboard for managing YDE Senior Fund raffle and donation entries.">
+    <meta description="Admin dashboard for managing Hillel Senior Fund raffle and donation entries.">
     <meta name="author" content="Saul Setton">
-    <meta keywords="YDE, Senior Fund, Admin, Dashboard, Raffle, Donations, Management">
+    <meta keywords="Hillel, Senior Fund, Admin, Dashboard, Raffle, Donations, Management">
     <link rel="icon" type="image/x-icon" href="/favicon/favicon.jpeg">
-    <title>YDE Senior Fund Admin Dashboard</title>
+    <title>Hillel Senior Fund Admin Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
         /* Define the core dark color scheme for consistency */
         .primary-dark { background-color: #0d1222; }
-        .accent-yellow { color: #facc15; }
+        .accent-sky { color: #38bdf8; }
         .card-dark { background-color: #1f2937; }
 
         body { 
@@ -39,8 +39,8 @@
             transition: all 0.3s ease;
         }
         .tab-button.active {
-            border-bottom: 3px solid #facc15; /* Tailwind yellow-400 */
-            color: #facc15; /* Active text is yellow */
+            border-bottom: 3px solid #38bdf8; /* Tailwind sky-400 */
+            color: #38bdf8; /* Active text is sky */
             font-weight: 600;
         }
         /* Make table text slightly smaller on mobile for density */
@@ -80,7 +80,7 @@
         }
         .conversion-table-row.selected {
              background-color: #374151; /* Tailwind gray-700 */
-             border-left: 4px solid #facc15;
+             border-left: 4px solid #38bdf8;
         }
     </style>
 </head>
@@ -88,16 +88,16 @@
 
     <!-- Global Loading Overlay -->
     <div id="globalLoadingOverlay" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex flex-col items-center justify-center gap-4 hidden">
-        <div class="animate-spin w-10 h-10 border-4 border-t-4 border-yellow-400 border-opacity-20 rounded-full"></div>
+        <div class="animate-spin w-10 h-10 border-4 border-t-4 border-sky-400 border-opacity-20 rounded-full"></div>
         <p id="globalSpinnerText" class="text-white font-semibold">Checking authorization...</p>
     </div>
 
     <!-- Custom Popup Modal (Alert/Success) -->
     <div id="customPopupOverlay" class="fixed inset-0 z-[101] modal-overlay flex items-center justify-center p-4 hidden">
         <div id="customPopup" class="bg-gray-800 p-6 rounded-lg shadow-2xl max-w-xs sm:max-w-sm w-full text-center scale-95 transition-all duration-300">
-            <h2 id="popupTitle" class="text-xl sm:text-2xl font-bold text-yellow-400 mb-3"></h2>
+            <h2 id="popupTitle" class="text-xl sm:text-2xl font-bold text-sky-400 mb-3"></h2>
             <p id="popupMessage" class="text-gray-300 mb-5 text-sm sm:text-base"></p>
-            <button id="popupCloseButton" class="w-full py-2 rounded-lg bg-yellow-500 text-black font-semibold hover:bg-yellow-600 transition-colors">OK</button>
+            <button id="popupCloseButton" class="w-full py-2 rounded-lg bg-sky-500 text-black font-semibold hover:bg-sky-600 transition-colors">OK</button>
         </div>
     </div>
     
@@ -112,7 +112,7 @@
                 <button type="button" id="exportAllRowsButton" class="w-full py-3 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors">
                     Export ALL Rows (Ignore Filters)
                 </button>
-                <button type="button" id="exportFilteredRowsButton" class="w-full py-3 rounded-lg bg-yellow-600 text-black font-semibold hover:bg-yellow-700 transition-colors">
+                <button type="button" id="exportFilteredRowsButton" class="w-full py-3 rounded-lg bg-sky-600 text-black font-semibold hover:bg-sky-700 transition-colors">
                     Export CURRENTLY FILTERED Rows
                 </button>
             </div>
@@ -132,8 +132,8 @@
             <form id="batchResetForm" class="space-y-4">
                 <div>
                     <label for="batch-new-password" class="block text-sm font-medium text-gray-300">Temporary New Password (min 6 chars)</label>
-                    <!-- FIX: Added autocomplete="new-password" -->
-                    <input type="password" id="batch-new-password" autocomplete="new-password" placeholder="Enter new password" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-red-500 focus:border-red-500 bg-gray-700 text-white" required minlength="6">
+                    <!-- FIX: Added aut.complete="new-password" -->
+                    <input type="password" id="batch-new-password" aut.complete="new-password" placeholder="Enter new password" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-red-500 focus:border-red-500 bg-gray-700 text-white" required minlength="6">
                 </div>
                 <div class="pt-4 flex justify-end space-x-3">
                     <button type="button" id="closeBatchResetModal" class="px-4 py-2 text-gray-300 bg-gray-600 rounded-lg hover:bg-gray-500 transition-colors">Cancel</button>
@@ -151,19 +151,19 @@
             <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">Add Manual Raffle Sale (SA Only)</h2>
             <form id="manualSaleForm" class="space-y-4">
                 <div>
-                    <input type="text" id="manual-name" placeholder="Customer Full Name" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-yellow-500 focus:border-yellow-500 bg-gray-700 text-white" required>
+                    <input type="text" id="manual-name" placeholder="Customer Full Name" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white" required>
                 </div>
                 <div>
-                    <input type="email" id="manual-email" placeholder="Customer Email (Optional)" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-yellow-500 focus:border-yellow-500 bg-gray-700 text-white">
+                    <input type="email" id="manual-email" placeholder="Customer Email (Optional)" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white">
                 </div>
                 <div>
-                    <input type="tel" id="manual-phone" placeholder="Customer Phone (Optional)" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-yellow-500 focus:border-yellow-500 bg-gray-700 text-white">
+                    <input type="tel" id="manual-phone" placeholder="Customer Phone (Optional)" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white">
                 </div>
                 
                 <!-- NEW: Raffle Type Dropdown (Split the Pot/Rolex Raffle) -->
                 <div class="space-y-1">
                     <label for="manual-entry-type" class="block text-sm font-medium text-gray-300">Sale Type</label>
-                    <select id="manual-entry-type" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-yellow-500 focus:border-yellow-500 bg-gray-700 text-white" required>
+                    <select id="manual-entry-type" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white" required>
                         <option value="raffle">Split The Pot</option>
                         <option value="rolex_raffle">Rolex Raffle</option>
                     </select>
@@ -171,16 +171,16 @@
                 <!-- END NEW -->
 
                 <div class="flex space-x-2 sm:space-x-4">
-                    <input type="number" id="manual-tickets" placeholder="Tickets Bought" min="1" class="w-1/2 p-3 border border-gray-600 rounded-lg focus:ring-yellow-500 focus:border-yellow-500 bg-gray-700 text-white" required>
-                    <input type="number" id="manual-amount" placeholder="Amount Paid ($)" step="0.01" min="0.01" class="w-1/2 p-3 border border-gray-600 rounded-lg focus:ring-yellow-500 focus:border-yellow-500 bg-gray-700 text-white" required>
+                    <input type="number" id="manual-tickets" placeholder="Tickets Bought" min="1" class="w-1/2 p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white" required>
+                    <input type="number" id="manual-amount" placeholder="Amount Paid ($)" step="0.01" min="0.01" class="w-1/2 p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white" required>
                 </div>
                 <div id="manual-referrer-container">
-                    <input type="text" id="manual-refId" placeholder="Referrer ID (e.g., A1B2C3)" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-yellow-500 focus:border-yellow-500 bg-gray-700 text-white">
+                    <input type="text" id="manual-refId" placeholder="Referrer ID (e.g., A1B2C3)" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white">
                     <p class="text-xs text-gray-400 mt-1">Credited to this Ref ID.</p>
                 </div>
                 <div class="pt-4 flex justify-end space-x-3">
                     <button type="button" id="closeManualSaleModal" class="px-4 py-2 text-gray-300 bg-gray-600 rounded-lg hover:bg-gray-500 transition-colors">Cancel</button>
-                    <button type="submit" id="submitManualSale" class="px-4 py-2 text-black bg-yellow-500 rounded-lg hover:bg-yellow-600 transition-colors font-semibold">Add Sale</button>
+                    <button type="submit" id="submitManualSale" class="px-4 py-2 text-black bg-sky-500 rounded-lg hover:bg-sky-600 transition-colors font-semibold">Add Sale</button>
                 </div>
             </form>
         </div>
@@ -192,19 +192,19 @@
             <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">Add Manual General Donation (SA Only)</h2>
             <form id="manualDonationForm" class="space-y-4">
                 <div>
-                    <input type="text" id="donation-name" placeholder="Donor Full Name" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-yellow-500 focus:border-yellow-500 bg-gray-700 text-white" required>
+                    <input type="text" id="donation-name" placeholder="Donor Full Name" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white" required>
                 </div>
                 <div>
-                    <input type="email" id="donation-email" placeholder="Donor Email (Optional)" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-yellow-500 focus:border-yellow-500 bg-gray-700 text-white">
+                    <input type="email" id="donation-email" placeholder="Donor Email (Optional)" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white">
                 </div>
                 <div>
-                    <input type="tel" id="donation-phone" placeholder="Donor Phone (Optional)" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-yellow-500 focus:border-yellow-500 bg-gray-700 text-white">
+                    <input type="tel" id="donation-phone" placeholder="Donor Phone (Optional)" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white">
                 </div>
                 <div>
-                    <input type="number" id="donation-amount" placeholder="Donation Amount ($)" step="0.01" min="0.01" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-yellow-500 focus:border-yellow-500 bg-gray-700 text-white" required>
+                    <input type="number" id="donation-amount" placeholder="Donation Amount ($)" step="0.01" min="0.01" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white" required>
                 </div>
                 <div>
-                    <input type="text" id="donation-refId" placeholder="Referrer ID to Credit (e.g., A1B2C3)" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-yellow-500 focus:border-yellow-500 bg-gray-700 text-white">
+                    <input type="text" id="donation-refId" placeholder="Referrer ID to Credit (e.g., A1B2C3)" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white">
                     <p class="text-xs text-gray-400 mt-1">Credited to this Ref ID.</p>
                 </div>
                 <div class="pt-4 flex justify-end space-x-3">
@@ -223,23 +223,23 @@
                 <input type="hidden" id="edit-donation-id">
                 <div>
                     <label for="edit-donation-name" class="block text-sm font-medium text-gray-300">Donor Full Name</label>
-                    <input type="text" id="edit-donation-name" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-yellow-500 focus:border-yellow-500 bg-gray-700 text-white" required>
+                    <input type="text" id="edit-donation-name" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white" required>
                 </div>
                 <div>
                     <label for="edit-donation-email" class="block text-sm font-medium text-gray-300">Email</label>
-                    <input type="email" id="edit-donation-email" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-yellow-500 focus:border-yellow-500 bg-gray-700 text-white">
+                    <input type="email" id="edit-donation-email" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white">
                 </div>
                 <div>
                     <label for="edit-donation-phone" class="block text-sm font-medium text-gray-300">Phone</label>
-                    <input type="tel" id="edit-donation-phone" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-yellow-500 focus:border-yellow-500 bg-gray-700 text-white">
+                    <input type="tel" id="edit-donation-phone" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white">
                 </div>
                 <div>
                     <label for="edit-donation-amount" class="block text-sm font-medium text-gray-300">Donation Amount ($)</label>
-                    <input type="number" id="edit-donation-amount" step="0.01" min="0.01" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-yellow-500 focus:border-yellow-500 bg-gray-700 text-white" required>
+                    <input type="number" id="edit-donation-amount" step="0.01" min="0.01" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white" required>
                 </div>
                 <div>
                     <label for="edit-donation-refId" class="block text-sm font-medium text-gray-300">Referrer ID to Credit</label>
-                    <input type="text" id="edit-donation-refId" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-yellow-500 focus:border-yellow-500 bg-gray-700 text-white" placeholder="Optional">
+                    <input type="text" id="edit-donation-refId" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white" placeholder="Optional">
                     <p class="text-xs text-gray-400 mt-1">Leave blank to remove referrer credit.</p>
                 </div>
                 <div class="pt-4 flex justify-end space-x-3">
@@ -258,24 +258,24 @@
                 <input type="hidden" id="edit-sale-id">
                 <div>
                     <label for="edit-name" class="block text-sm font-medium text-gray-300">Customer Full Name</label>
-                    <input type="text" id="edit-name" placeholder="Full Name" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-yellow-500 focus:border-yellow-500 bg-gray-700 text-white" required>
+                    <input type="text" id="edit-name" placeholder="Full Name" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white" required>
                 </div>
                 <div>
                     <label for="edit-email" class="block text-sm font-medium text-gray-300">Email</label>
-                    <input type="email" id="edit-email" placeholder="Email (Optional)" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-yellow-500 focus:border-yellow-500 bg-gray-700 text-white">
+                    <input type="email" id="edit-email" placeholder="Email (Optional)" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white">
                 </div>
                 <div>
                     <label for="edit-phone" class="block text-sm font-medium text-gray-300">Phone</label>
-                    <input type="tel" id="edit-phone" placeholder="Phone (Optional)" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-yellow-500 focus:border-yellow-500 bg-gray-700 text-white">
+                    <input type="tel" id="edit-phone" placeholder="Phone (Optional)" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white">
                 </div>
                 <div class="flex space-x-2 sm:space-x-4">
                     <div class="w-1/2">
                         <label for="edit-tickets" class="block text-sm font-medium text-gray-300">Tickets Bought</label>
-                        <input type="number" id="edit-tickets" placeholder="Tickets Bought" min="1" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-yellow-500 focus:border-yellow-500 bg-gray-700 text-white" required>
+                        <input type="number" id="edit-tickets" placeholder="Tickets Bought" min="1" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white" required>
                     </div>
                     <div class="w-1/2">
                         <label for="edit-amount" class="block text-sm font-medium text-gray-300">Amount Paid ($)</label>
-                        <input type="number" id="edit-amount" placeholder="Amount Paid ($)" step="0.01" min="0.01" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-yellow-500 focus:border-yellow-500 bg-gray-700 text-white" required>
+                        <input type="number" id="edit-amount" placeholder="Amount Paid ($)" step="0.01" min="0.01" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white" required>
                     </div>
                 </div>
                 <div class="pt-4 flex justify-end space-x-3">
@@ -289,13 +289,13 @@
     <!-- NEW: Ticket Conversion Tool Modal (Super Admin Only) -->
     <div id="conversionToolModalOverlay" class="fixed inset-0 z-50 modal-overlay flex items-center justify-center p-4 hidden">
         <div class="bg-gray-800 p-6 rounded-lg shadow-2xl max-w-lg w-full">
-            <h2 class="text-xl sm:text-2xl font-bold text-yellow-400 mb-4">Old Ticket Conversion Tool</h2>
+            <h2 class="text-xl sm:text-2xl font-bold text-sky-400 mb-4">Old Ticket Conversion Tool</h2>
             <form id="conversionForm" class="space-y-4">
                 <div class="border-b border-gray-700 pb-4">
                     <label class="block text-sm font-medium text-gray-300 mb-2">1. Select Paid Ticket for Conversion:</label>
                     
                     <!-- Search/Filter Input for List -->
-                    <input type="text" id="conversion-list-search" placeholder="Filter by Name, Email, or Old ID..." class="w-full p-3 border border-gray-600 rounded-lg focus:ring-yellow-500 focus:border-yellow-500 bg-gray-700 text-white mb-3">
+                    <input type="text" id="conversion-list-search" placeholder="Filter by Name, Email, or Old ID..." class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white mb-3">
                     
                     <!-- List/Table of Tickets -->
                     <div class="max-h-40 overflow-y-auto border border-gray-600 rounded-lg">
@@ -315,7 +315,7 @@
                 </div>
 
                 <div id="conversion-details-container" class="space-y-4 hidden pt-4">
-                    <h3 class="text-lg font-semibold text-white">Conversion Details for: <span id="conversion-name" class="text-yellow-400"></span></h3>
+                    <h3 class="text-lg font-semibold text-white">Conversion Details for: <span id="conversion-name" class="text-sky-400"></span></h3>
                     
                     <div class="grid grid-cols-2 gap-4 text-sm">
                         <div>
@@ -334,7 +334,7 @@
                     
                     <div class="border-t border-gray-700 pt-4 space-y-4">
                         <label for="conversion-new-tickets" class="block text-sm font-medium text-gray-300 mb-1">2. New Rolex Raffle Entries ($150 each):</label>
-                        <input type="number" id="conversion-new-tickets" placeholder="How many new tickets?" min="1" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-yellow-500 focus:border-yellow-500 bg-gray-700 text-white" required>
+                        <input type="number" id="conversion-new-tickets" placeholder="How many new tickets?" min="1" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white" required>
                         
                         <div class="grid grid-cols-2 gap-4">
                             <div>
@@ -353,7 +353,7 @@
                                 <input type="checkbox" id="manual-payment-confirmed" class="form-checkbox text-red-500 h-4 w-4 rounded">
                                 <span class="ml-2 font-semibold text-red-400">I confirm the <span id="due-amount-display" class="underline"></span> outstanding balance has been collected (Cash, Venmo, etc.).</span>
                             </label>
-                            <p class="text-xs text-gray-400 pl-6">Checking this box finalizes the conversion and marks the transaction as complete, assuming the balance has been paid manually.</p>
+                            <p class="text-xs text-gray-400 pl-6">Checking this box finalizes the conversion and marks the transaction as.complete, assuming the balance has been paid manually.</p>
                         </div>
 
                         <!-- Surplus Action Options -->
@@ -375,7 +375,7 @@
                         <input type="hidden" id="conversion-original-amount-value">
 
                         <div class="pt-4">
-                            <button type="submit" id="convertTicketsButton" class="w-full py-3 text-black bg-yellow-500 rounded-lg font-semibold hover:bg-yellow-600 transition-colors disabled:opacity-50" disabled>Convert & Finalize Tickets</button>
+                            <button type="submit" id="convertTicketsButton" class="w-full py-3 text-black bg-sky-500 rounded-lg font-semibold hover:bg-sky-600 transition-colors disabled:opacity-50" disabled>Convert & Finalize Tickets</button>
                         </div>
                     </div>
                 </div>
@@ -396,7 +396,7 @@
 
             <!-- Search and Action Bar -->
             <div class="flex flex-col md:flex-row gap-3 md:items-center mb-4">
-                <input type="text" id="unassignedSearchInput" placeholder="Search customer, phone, email, or current referrer ID..." class="w-full md:w-1/2 p-3 border border-gray-600 rounded-lg focus:ring-yellow-500 focus:border-yellow-500 bg-gray-700 text-white">
+                <input type="text" id="unassignedSearchInput" placeholder="Search customer, phone, email, or current referrer ID..." class="w-full md:w-1/2 p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white">
                 <div class="flex-grow"></div>
                 <span id="selectedCountDisplay" class="text-sm font-medium text-gray-400">0 sales selected</span>
                 <button id="applyReferrerButton" class="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 transition-colors disabled:opacity-50" disabled>
@@ -441,7 +441,7 @@
 
             <!-- Search and Action Bar -->
             <div class="flex flex-col md:flex-row gap-3 md:items-center mb-4">
-                <input type="text" id="rolexSearchInput" placeholder="Search customer, email, or current referrer ID..." class="w-full md:w-1/2 p-3 border border-gray-600 rounded-lg focus:ring-yellow-500 focus:border-yellow-500 bg-gray-700 text-white">
+                <input type="text" id="rolexSearchInput" placeholder="Search customer, email, or current referrer ID..." class="w-full md:w-1/2 p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white">
                 <div class="flex-grow"></div>
                 <span id="selectedRolexCountDisplay" class="text-sm font-medium text-gray-400">0 tickets selected</span>
                 <button id="applyRolexReferrerButton" class="px-4 py-2 bg-purple-500 text-white font-semibold rounded-lg shadow-md hover:bg-purple-600 transition-colors disabled:opacity-50" disabled>
@@ -506,7 +506,7 @@
         <header class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 border-b border-gray-700 pb-4">
             <h1 class="text-2xl sm:text-3xl font-bold text-white mb-2 md:mb-0">
                 Admin Dashboard 
-                <span id="userRoleDisplay" class="text-base font-normal text-yellow-400"></span>
+                <span id="userRoleDisplay" class="text-base font-normal text-sky-400"></span>
             </h1>
             <!-- Added flex-wrap and adjusted spacing for smaller screens -->
             <div class="flex flex-wrap items-center gap-2 mt-2 md:mt-0">
@@ -567,7 +567,7 @@
                     <p id="overviewTotalClicks" class="text-xl font-bold text-white mt-1">0</p>
                 </div>
                 
-                <div class="p-4 bg-yellow-900/50 border-l-4 border-yellow-500 rounded-lg">
+                <div class="p-4 bg-sky-900/50 border-l-4 border-sky-500 rounded-lg">
                     <p class="text-sm font-medium text-gray-400">Ref ID</p>
                     <p id="overviewRefId" class="text-xl font-bold text-white mt-1">Loading...</p>
                 </div>
@@ -646,7 +646,7 @@
                     <div class="flex flex-col sm:flex-row gap-4 mb-4">
                         <!-- Search Input -->
                         <div class="relative flex-grow">
-                            <input type="text" id="referrerSearchInput" placeholder="Search by Name, ID, or Email..." class="w-full p-2 pl-10 border border-gray-600 rounded-lg focus:ring-yellow-500 focus:border-yellow-500 bg-gray-700 text-white text-sm">
+                            <input type="text" id="referrerSearchInput" placeholder="Search by Name, ID, or Email..." class="w-full p-2 pl-10 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white text-sm">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.197 5.197a7.5 7.5 0 0010.607 10.607z" /></svg>
                         </div>
                     </div>
@@ -657,34 +657,34 @@
                                 <tr>
                                     <th class="referrer-sort-header cursor-pointer group hover:bg-gray-700" data-sort-key="name">
                                         <div class="flex items-center justify-between">Name
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 ml-1 hidden text-yellow-500"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 ml-1 hidden text-sky-500"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
                                         </div>
                                     </th>
                                     <th class="referrer-sort-header cursor-pointer group hover:bg-gray-700" data-sort-key="refId">
                                         <div class="flex items-center justify-between">Ref ID
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 ml-1 hidden text-yellow-500"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 ml-1 hidden text-sky-500"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
                                         </div>
                                     </th>
                                     <th>Email</th>
                                     <th class="referrer-sort-header cursor-pointer group hover:bg-gray-700 text-right" data-sort-key="raffleTickets">
                                         <div class="flex items-center justify-end">Split Pot Tickets
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 ml-1 hidden text-yellow-500"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 ml-1 hidden text-sky-500"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
                                         </div>
                                     </th>
                                     <th class="referrer-sort-header cursor-pointer group hover:bg-gray-700 text-right" data-sort-key="rolexTickets">
                                         <div class="flex items-center justify-end">Spin Wheel Tickets
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 ml-1 hidden text-yellow-500"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 ml-1 hidden text-sky-500"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
                                         </div>
                                     </th>
-                                    <th class="referrer-sort-header cursor-pointer group hover:bg-gray-700 text-right" data-sort-key="combinedTotalAmount">
+                                    <th class="referrer-sort-header cursor-pointer group hover:bg-gray-700 text-right" data-sort-key=.combinedTotalAmount">
                                         <div class="flex items-center justify-end">Total Amount
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 ml-1 hidden text-yellow-500"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 ml-1 hidden text-sky-500"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
                                         </div>
                                     </th>
                                     <th>Goal</th>
                                     <th class="referrer-sort-header cursor-pointer group hover:bg-gray-700 text-right" data-sort-key="clickCount">
                                         <div class="flex items-center justify-end">Clicks
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 ml-1 hidden text-yellow-500"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 ml-1 hidden text-sky-500"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
                                         </div>
                                     </th>
                                     <th class="text-center">Action</th> <!-- NEW ACTION COLUMN -->
@@ -708,7 +708,7 @@
                         <!-- FILTER DROPDOWN (Hidden for non-SA Referrers) -->
                         <div id="raffleFilterControls" class="flex items-center space-x-2">
                             <label for="raffleFilter" class="text-sm font-medium text-gray-400">Filter:</label>
-                            <select id="raffleFilter" class="p-2 border border-gray-600 rounded-lg text-sm focus:ring-yellow-500 focus:border-yellow-500 bg-gray-700 text-white">
+                            <select id="raffleFilter" class="p-2 border border-gray-600 rounded-lg text-sm focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white">
                                 <option value="all">All Sales</option>
                                 <option value="assigned">Assigned</option>
                                 <option value="unassigned">Unassigned</option>
@@ -808,10 +808,10 @@
                     <h3 class="text-2xl font-bold text-white">System Tools (SA Only)</h3>
                     
                     <!-- NEW: Conversion Tool Card -->
-                    <div class="border p-4 rounded-lg bg-yellow-900/50 border-yellow-700">
-                        <h4 class="font-semibold text-lg text-yellow-400 mb-2">Ticket Conversion Tool (Old Raffle to New Rolex)</h4>
+                    <div class="border p-4 rounded-lg bg-sky-900/50 border-sky-700">
+                        <h4 class="font-semibold text-lg text-sky-400 mb-2">Ticket Conversion Tool (Old Raffle to New Rolex)</h4>
                         <p class="text-sm text-gray-300 mb-3">Converts old ticket purchases (based on amount paid) to the new $150 Rolex Raffle entries. Handles outstanding balance confirmation and surplus credit via donation or refund logging. **Note: Original ticket is deleted upon successful conversion.**</p>
-                        <button id="openConversionToolButton" class="px-4 py-2 bg-yellow-500 text-black font-semibold rounded-lg hover:bg-yellow-600 transition-colors disabled:opacity-50 text-sm">
+                        <button id="openConversionToolButton" class="px-4 py-2 bg-sky-500 text-black font-semibold rounded-lg hover:bg-sky-600 transition-colors disabled:opacity-50 text-sm">
                             Open Conversion Tool
                         </button>
                     </div>
@@ -831,7 +831,7 @@
                         <!-- NEW: Recalculate ALL Referrer Totals (The requested feature) -->
                         <div id="recalculateAllTotalsCard" class="border p-4 rounded-lg bg-red-900/50 border-red-700">
                             <h4 class="font-semibold text-lg text-red-400 mb-2">Recalculate ALL Referrer Totals</h4>
-                            <p class="text-sm text-gray-300 mb-3">Rebuilds all ticket counts (Split/Spin) and combined sales amount for **every** referrer from all sales data.</p>
+                            <p class="text-sm text-gray-300 mb-3">Rebuilds all ticket counts (Split/Spin) and.combined sales amount for **every** referrer from all sales data.</p>
                             <button id="recalculateAllReferrerTotalsButton" class="px-4 py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 transition-colors disabled:opacity-50 text-sm">
                                 Rebuild All Totals
                             </button>
@@ -849,7 +849,7 @@
                         <!-- Recalculate Rolex Raffle Totals (NEW) -->
                         <div id="recalculateRolexTotalsCard" class="border p-4 rounded-lg bg-purple-900/50 border-purple-700">
                             <h4 class="font-semibold text-lg text-purple-400 mb-2">Recalculate Rolex Raffle Totals (Global)</h4>
-                            <p class="text-sm text-gray-300 mb-3">Resets and sums all Spin tickets to update **Global** <code>rolexTicketsTotal</code> (Spin Count) and the combined <code>totalAmount</code> ($).</p>
+                            <p class="text-sm text-gray-300 mb-3">Resets and sums all Spin tickets to update **Global** <code>rolexTicketsTotal</code> (Spin Count) and the.combined <code>totalAmount</code> ($).</p>
                             <button id="recalculateRolexTotalsButton" class="px-4 py-2 bg-purple-500 text-white font-semibold rounded-lg hover:bg-purple-600 transition-colors disabled:opacity-50 text-sm">
                                 Recalculate Global Wheel
                             </button>
@@ -872,13 +872,13 @@
             <h2 class="text-3xl font-bold text-white mb-6 text-center">Admin Login</h2>
             <form id="loginForm" class="space-y-4">
                 <div>
-                    <input type="email" id="loginEmail" placeholder="Email" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-yellow-500 focus:border-yellow-500 bg-gray-700 text-white" required>
+                    <input type="email" id="loginEmail" placeholder="Email" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white" required>
                 </div>
                 <div>
-                    <!-- FIX: Added autocomplete="current-password" -->
-                    <input type="password" id="loginPassword" autocomplete="current-password" placeholder="Password" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-yellow-500 focus:border-yellow-500 bg-gray-700 text-white" required>
+                    <!-- FIX: Added aut.complete="current-password" -->
+                    <input type="password" id="loginPassword" aut.complete="current-password" placeholder="Password" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white" required>
                 </div>
-                <button type="submit" id="loginButton" class="w-full py-3 text-black bg-yellow-500 rounded-lg font-semibold hover:bg-yellow-600 transition-colors">Sign In</button>
+                <button type="submit" id="loginButton" class="w-full py-3 text-black bg-sky-500 rounded-lg font-semibold hover:bg-sky-600 transition-colors">Sign In</button>
             </form>
             <p id="loginError" class="text-red-400 text-sm mt-3 text-center hidden"></p>
         </div>
@@ -945,7 +945,7 @@
         let rolexFilter = 'all'; // 'all', 'assigned', 'unassigned'
         
         // State for sorting the Referrers table
-        let referrerSortConfig = { key: 'combinedTotalAmount', direction: 'desc' };
+        let referrerSortConfig = { key: .combinedTotalAmount', direction: 'desc' };
         let userSortConfig = { key: 'createdAt', direction: 'desc' }; // Default sort for users
         let donationSortConfig = { key: 'createdAt', direction: 'desc' }; // Default sort for donations
 
@@ -955,17 +955,17 @@
 
         // ---------------------------------------------
 
-        // Configuration and App ID (Hardcoded for request compliance)
+        // Configuration and App ID (Hardcoded for request.compliance)
         const appId = 'yde-senior-fund';
         const initialAuthToken = null;
         
         const firebaseConfig = {
-            apiKey: "AIzaSyAT539nr_s2OxHPTAmkxwMpaWt-FiDTgQs", // Placeholder Key
-            authDomain: "yderaffle.firebaseapp.com",
-            projectId: "yderaffle",
-            storageBucket: "yderaffle.firebasestorage.app",
-            messagingSenderId: "967768309102",
-            appId: "1:967768309102:web:c89d61a747e8cb941f557f"
+            apiKey: "AIzaSyBYh2I_TOn9xGW_wxqlfLXpv9-KP501ca0", // Placeholder Key
+            authDomain: "hillel-raffle.firebaseapp.com",
+            projectId: "hillel-raffle",
+            storageBucket: "hillel-raffle.firebasestorage.app",
+            messagingSenderId: "1095480662289",
+            appId: "1:1095480662289:web:47b777735eecafb236d4b0"
         };
         
         // --- Utility Functions ---
@@ -988,7 +988,7 @@
                 if (timestamp.toDate && typeof timestamp.toDate === 'function') {
                     date = timestamp.toDate();
                 } else {
-                    // Check for server-serialized raw seconds/nanoseconds (common from callable functions)
+                    // Check for server-serialized raw seconds/nanoseconds .common from callable functions)
                     const seconds = timestamp.seconds || timestamp._seconds;
                     if (typeof seconds === 'number') {
                         // Use the seconds property for reconstruction
@@ -1116,20 +1116,20 @@
                     let bVal = b[sortConfig.key];
                     
                     if (sortConfig.key === 'name' || sortConfig.key === 'fullName' || sortConfig.key === 'referrerRefId' || sortConfig.key === 'id' || sortConfig.key === 'email' || sortConfig.key === 'displayName' || sortConfig.key === 'refId') {
-                        // String comparison
+                        // String.comparison
                         aVal = String(aVal || '').toLowerCase();
                         bVal = String(bVal || '').toLowerCase();
                         if (aVal < bVal) return sortConfig.direction === 'asc' ? -1 : 1;
                         if (aVal > bVal) return sortConfig.direction === 'asc' ? 1 : -1;
                         return 0;
                     } else if (sortConfig.key === 'timestamp' || sortConfig.key === 'createdAt' || sortConfig.key === 'lastSignInTime') {
-                        // Date comparison (using milliseconds)
+                        // Date.comparison (using milliseconds)
                         const aTime = getTimestampValue(aVal);
                         const bTime = getTimestampValue(bVal);
                         return sortConfig.direction === 'asc' ? aTime - bTime : bTime - aTime;
                     } 
                     else {
-                        // Numeric comparison
+                        // Numeric.comparison
                         aVal = aVal || 0;
                         bVal = bVal || 0;
                         if (aVal < bVal) return sortConfig.direction === 'asc' ? -1 : 1;
@@ -1182,8 +1182,8 @@
                 const raffleTickets = parseInt(r.totalTickets) || 0; 
                 const rolexTickets = parseInt(r.rolexTicketsTotal) || 0; 
                 
-                // Use the server-provided combined amount
-                let combinedTotalAmount = parseFloat(r.totalAmount) || 0; 
+                // Use the server-provided.combined amount
+                let.combinedTotalAmount = parseFloat(r.totalAmount) || 0; 
 
                 const totalTickets = raffleTickets + rolexTickets;
 
@@ -1192,7 +1192,7 @@
                     raffleTickets: raffleTickets,
                     rolexTickets: rolexTickets,
                     // Use a new field name here for the list view, so we don't confuse it with the raw field.
-                    combinedTotalAmount: combinedTotalAmount, 
+                   .combinedTotalAmount:.combinedTotalAmount, 
                     totalTickets: totalTickets, 
                     clickCount: parseInt(r.clickCount) || 0
                 });
@@ -1202,7 +1202,7 @@
             
             // FIX: Ensure data.userData gets the fully calculated/parsed metrics from the map.
             if (currentUserRefId && referrerMap.has(currentUserRefId)) {
-                // Overwrite the userData with the richer object that contains combinedTotalAmount
+                // Overwrite the userData with the richer object that contains.combinedTotalAmount
                 data.userData = referrerMap.get(currentUserRefId);
             }
             
@@ -1345,7 +1345,7 @@
                     document.getElementById('overviewTotalAmount').textContent = formatCurrency(finalTotalAmount); 
 
                     const referralLinkElement = document.getElementById('referralLink');
-                    const link = `ydeseniors.com/?ref=${finalRefId}`;
+                    const link = `hillelseniors.com/?ref=${finalRefId}`;
                     referralLinkElement.textContent = link;
                     document.getElementById('referrerLinkContainer').classList.remove('hidden');
 
@@ -1389,7 +1389,7 @@
                 const tableContext = header.dataset.table || (header.classList.contains('referrer-sort-header') ? 'referrer' : (header.classList.contains('user-sort-header') ? 'users' : (header.classList.contains('donation-sort-header') ? 'donations' : '')));
                 if (tableContext === table) {
                     // Remove all previous active/color classes
-                    header.classList.remove('active', 'text-yellow-400', 'text-purple-400', 'text-red-400', 'font-semibold', 'text-asc', 'text-desc');
+                    header.classList.remove('active', 'text-sky-400', 'text-purple-400', 'text-red-400', 'font-semibold', 'text-asc', 'text-desc');
                     
                     // Specific handling for referrer table header icons (using the nested SVG)
                     if (header.classList.contains('referrer-sort-header')) {
@@ -1408,7 +1408,7 @@
                 activeHeader.classList.add('active', 'font-semibold');
 
                 // Determine color based on table type
-                let colorClass = 'text-yellow-400'; // Default for raffle/referrer
+                let colorClass = 'text-sky-400'; // Default for raffle/referrer
                 if (table === 'rolex') colorClass = 'text-purple-400';
                 else if (table === 'users') colorClass = 'text-red-400';
 
@@ -1618,7 +1618,7 @@
 
                 // Super Admin can see the action buttons and click to filter sales
                 if (isSuperAdmin) {
-                    // Update: Clicking the name now applies the combined filter and shows sales.
+                    // Update: Clicking the name now applies the.combined filter and shows sales.
                     nameCellContent = `<span 
                                                  class="text-white font-semibold cursor-pointer hover:underline" 
                                                  data-action="view-referrer-sales" 
@@ -1654,7 +1654,7 @@
 
                 tr.innerHTML = `
                     <td>${nameCellContent}</td>
-                    <td><span class="font-mono text-xs px-2 py-1 bg-yellow-400/20 text-yellow-300 rounded">${r.refId}</span></td>
+                    <td><span class="font-mono text-xs px-2 py-1 bg-sky-400/20 text-sky-300 rounded">${r.refId}</span></td>
                     <td>${r.email || 'N/A'}</td>
                     <td class="text-right">${(r.raffleTickets || 0).toLocaleString()}</td>
                     <td class="text-right">${(r.rolexTickets || 0).toLocaleString()}</td>
@@ -1733,14 +1733,14 @@
                 return;
             }
             displayEntries.forEach(e => {
-                const referrerInfo = e.referrerName ? `<span class="text-gray-300">${e.referrerName}</span> (<span class="font-mono text-xs px-1 bg-yellow-400/20 text-yellow-300 rounded">${e.referrerRefId}</span>)` : '<span class="text-red-400 font-medium">None</span>';
+                const referrerInfo = e.referrerName ? `<span class="text-gray-300">${e.referrerName}</span> (<span class="font-mono text-xs px-1 bg-sky-400/20 text-sky-300 rounded">${e.referrerRefId}</span>)` : '<span class="text-red-400 font-medium">None</span>';
                 const customerName = e.fullName || e.name || e.firstName || 'N/A';
                 
                 let actionCell = '';
                 if (isSuperAdmin) {
                     actionCell = `
                         <div class="flex flex-col sm:flex-row gap-1">
-                            <button class="px-2 py-1 text-xs bg-yellow-500 text-black font-semibold rounded-lg hover:bg-yellow-600 transition-colors"
+                            <button class="px-2 py-1 text-xs bg-sky-500 text-black font-semibold rounded-lg hover:bg-sky-600 transition-colors"
                                 data-action="edit-sale"
                                 data-entry-id="${e.id}">Edit</button>
                             <button class="px-2 py-1 text-xs bg-red-600 text-white font-semibold rounded-lg hover:bg-red-500 transition-colors"
@@ -1808,7 +1808,7 @@
                 return;
             }
             displayEntries.forEach(e => {
-                const referrerInfo = e.referrerRefId ? `<span class="font-mono text-xs px-1 bg-yellow-400/20 text-yellow-300 rounded">${e.referrerRefId}</span>` : 'None';
+                const referrerInfo = e.referrerRefId ? `<span class="font-mono text-xs px-1 bg-sky-400/20 text-sky-300 rounded">${e.referrerRefId}</span>` : 'None';
                 // Use background color based on status
                 let statusText = (e.status || 'N/A').toUpperCase();
                 let statusClass = 'bg-gray-700/50 text-gray-300';
@@ -1868,10 +1868,10 @@
                 let statusText = (e.status || 'N/A').toUpperCase();
                 let statusClass = 'bg-green-700/50 text-green-300';
                 if (statusText === 'MANUAL_DONATED_CONVERSION_SURPLUS') {
-                     statusClass = 'bg-yellow-700/50 text-yellow-300';
+                     statusClass = 'bg-sky-700/50 text-sky-300';
                      statusText = 'CONV. SURPLUS';
                 } else if (statusText === 'MANUAL_DONATED') {
-                     statusClass = 'bg-yellow-700/50 text-yellow-300';
+                     statusClass = 'bg-sky-700/50 text-sky-300';
                 } else if (statusText === 'PAID' || statusText === 'SUCCEEDED') {
                      statusClass = 'bg-green-700/50 text-green-300';
                 }
@@ -1880,7 +1880,7 @@
                 if (isSuperAdmin) {
                     actionCell = `
                         <div class="flex flex-col sm:flex-row gap-1">
-                            <button class="px-2 py-1 text-xs bg-yellow-500 text-black font-semibold rounded-lg hover:bg-yellow-600 transition-colors" data-action="edit-donation" data-donation-id="${e.id}">Edit</button>
+                            <button class="px-2 py-1 text-xs bg-sky-500 text-black font-semibold rounded-lg hover:bg-sky-600 transition-colors" data-action="edit-donation" data-donation-id="${e.id}">Edit</button>
                             <button class="px-2 py-1 text-xs bg-red-600 text-white font-semibold rounded-lg hover:bg-red-500 transition-colors" data-action="delete-donation" data-donation-id="${e.id}">Delete</button>
                         </div>
                     `;
@@ -1890,7 +1890,7 @@
                 tr.innerHTML = `
                     <td>${formatDate(e.createdAt)}</td>
                     <td>${customerName}</td>
-                    <td>${contactDisplay}</td> <!-- Updated to prioritize phone in combined contact field -->
+                    <td>${contactDisplay}</td> <!-- Updated to prioritize phone in.combined contact field -->
                     <td>${e.referrerRefId || 'N/A'}</td>
                     <td class="text-right font-medium">${formatCurrency(e.amount || e.amountPaid || 0)}</td>
                     <td><span class="text-xs font-medium px-2 py-1 rounded-full ${statusClass}">${statusText}</span></td>
@@ -1950,7 +1950,7 @@
             raffleFilter = 'all'; 
             document.getElementById('raffleFilter').value = 'all';
 
-            // Re-render both sales tables (Raffle and Rolex) to apply the combined filter
+            // Re-render both sales tables (Raffle and Rolex) to apply the.combined filter
             renderRaffleTable(dashboardData.raffleEntries); 
             renderRolexTable(dashboardData.rolexEntries); 
             
@@ -2284,19 +2284,19 @@
                 ...data.map(row => headers.map(fieldName => {
                     let value = row[fieldName] === null || row[fieldName] === undefined ? '' : row[fieldName];
 
-                    // Special handling for nested objects (e.g., Timestamps) and commas
+                    // Special handling for nested objects (e.g., Timestamps) and.commas
                     if (typeof value === 'object') {
                         if (fieldName.toLowerCase().includes('date') || fieldName.toLowerCase().includes('timestamp') || fieldName.toLowerCase().includes('createdat') || fieldName.toLowerCase().includes('time')) {
-                            // Use existing date formatter, remove internal commas
+                            // Use existing date formatter, remove internal.commas
                             value = formatDate(value).replace(/,/g, ''); 
                         } else {
-                            // Serialize object, replace internal commas with semicolons
+                            // Serialize object, replace internal.commas with semicolons
                             value = JSON.stringify(value).replace(/,/g, ';'); 
                         }
                     } else if (typeof value === 'string') {
                         value = value.replace(/"/g, '""'); // Escape double quotes
                         if (value.includes(',')) {
-                            value = `"${value}"`; // Enclose strings with commas in quotes
+                            value = `"${value}"`; // Enclose strings with.commas in quotes
                         }
                     }
                     return value;
@@ -2389,7 +2389,7 @@
                     break;
                 case 'referrers':
                     sortConfigForExport = referrerSortConfig;
-                    // Referrers export combines filtering and sorting.
+                    // Referrers export.combines filtering and sorting.
                     data = cleanData(scope === 'all' ? sortEntries(dashboardData.referrers, sortConfigForExport) : filterReferrers(dashboardData.referrers));
                     break;
                 case 'raffle':
@@ -2891,7 +2891,7 @@
                 const contact = sale.phoneNumber || sale.email || 'N/A';
 
                 const currentReferrerContent = sale.referrerRefId 
-                    ? `<span class="font-mono text-xs px-2 py-1 bg-yellow-400/20 text-yellow-300 rounded">${sale.referrerRefId}</span>`
+                    ? `<span class="font-mono text-xs px-2 py-1 bg-sky-400/20 text-sky-300 rounded">${sale.referrerRefId}</span>`
                     : '<span class="text-red-400">None</span>';
 
 
@@ -3077,7 +3077,7 @@
                 }
                 
                 const currentReferrerContent = ticket.referrerRefId 
-                    ? `<span class="font-mono text-xs px-1 bg-yellow-400/20 text-yellow-300 rounded">${ticket.referrerRefId}</span>`
+                    ? `<span class="font-mono text-xs px-1 bg-sky-400/20 text-sky-300 rounded">${ticket.referrerRefId}</span>`
                     : '<span class="text-red-400">None</span>';
 
                 const tr = document.createElement('tr');
