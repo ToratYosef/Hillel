@@ -1,0 +1,15 @@
+[33mbd704e7[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m HEAD@{0}: pull --rebase (finish): returning to refs/heads/main
+[33mbd704e7[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m HEAD@{1}: pull --rebase (pick): Auto-commit on Sunday, Oct 26 @ 21:30
+[33m300554c[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{2}: pull --rebase (start): checkout 300554c8e60312140b8edada5dbbc77b557cfd6c
+[33md3baa2c[m HEAD@{3}: pull --rebase (finish): returning to refs/heads/main
+[33md3baa2c[m HEAD@{4}: pull --rebase (pick): Auto-commit on Sunday, Oct 26 @ 21:30
+[33m56e99cf[m HEAD@{5}: pull --rebase (start): checkout 56e99cfe486cfb7a2cfd25302c32d0294353b9ac
+[33m57ca0da[m HEAD@{6}: checkout: moving from codex/update-branding-and-color-scheme-9xy9ii to main
+[33m4b54ea5[m[33m ([m[1;31morigin/codex/update-branding-and-color-scheme-9xy9ii[m[33m, [m[1;32mcodex/update-branding-and-color-scheme-9xy9ii[m[33m)[m HEAD@{7}: commit (merge): Merge origin/main; resolve CNAME by deleting (match main)
+[33ma5b029b[m HEAD@{8}: pull --tags origin codex/update-branding-and-color-scheme-9xy9ii: Fast-forward
+[33mf5d09c5[m HEAD@{9}: reset: moving to HEAD
+[33mf5d09c5[m HEAD@{10}: checkout: moving from main to codex/update-branding-and-color-scheme-9xy9ii
+[33m57ca0da[m HEAD@{11}: checkout: moving from codex/update-branding-and-color-scheme-9xy9ii to main
+[33mf5d09c5[m HEAD@{12}: checkout: moving from main to codex/update-branding-and-color-scheme-9xy9ii
+[33m57ca0da[m HEAD@{13}: commit: Auto-commit on Sunday, Oct 26 @ 21:30
+[33m15d550f[m HEAD@{14}: clone: from https://github.com/ToratYosef/Hillel
