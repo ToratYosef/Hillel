@@ -49,72 +49,148 @@
         }
     </script>
     <style>
-        /* Base Styling */
+        :root {
+            --bg-gradient: linear-gradient(135deg, #050417 0%, #190a3a 45%, #341264 100%);
+            --surface: rgba(24, 14, 52, 0.82);
+            --surface-strong: rgba(17, 9, 41, 0.92);
+            --surface-soft: rgba(45, 26, 86, 0.6);
+            --accent: #ff8a3d;
+            --accent-alt: #ff5fa0;
+            --accent-secondary: #8c5cf6;
+            --accent-glow: rgba(255, 95, 160, 0.45);
+            --text-muted: #d8cfff;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0d1222;
-            background-image: linear-gradient(135deg, #0d1222 0%, #151a2d 100%);
+            background-image: var(--bg-gradient);
             color: #ffffff;
         }
+
         .bebas-neue {
             font-family: 'Bebas Neue', sans-serif;
         }
-        /* Custom scrollbar for better look */
-        ::-webkit-scrollbar {
-            width: 8px;
+
+        .glass-header {
+            background: linear-gradient(120deg, rgba(25, 8, 58, 0.9), rgba(60, 16, 94, 0.7));
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 35px rgba(9, 5, 30, 0.65);
         }
+
+        .nav-link:hover { color: var(--accent) !important; }
+
+        .brand-ring {
+            box-shadow: 0 0 25px rgba(255, 95, 160, 0.35);
+            border: 2px solid rgba(255, 138, 61, 0.65) !important;
+        }
+
+        .card-surface {
+            background: var(--surface);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 25px 55px rgba(8, 5, 24, 0.55);
+            border-radius: 1.5rem;
+        }
+
+        .metric-card {
+            background: var(--surface-strong);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 18px 45px rgba(8, 5, 24, 0.55);
+        }
+
+        .accent-button {
+            background-image: linear-gradient(120deg, var(--accent) 0%, var(--accent-alt) 45%, var(--accent-secondary) 100%);
+            color: #ffffff !important;
+            box-shadow: 0 15px 35px rgba(255, 95, 160, 0.35);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+        }
+
+        .accent-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 22px 45px rgba(255, 138, 61, 0.4);
+            filter: brightness(1.05);
+        }
+
+        .search-input {
+            background: rgba(19, 12, 36, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #fff;
+            transition: border 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent-alt);
+            box-shadow: 0 0 0 4px rgba(255, 95, 160, 0.25);
+            outline: none;
+        }
+
+        .contact-card {
+            background: var(--surface-soft);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1rem;
+            padding: 1.25rem;
+        }
+
+        .footer-link { color: var(--accent-alt); }
+
+        .footer-link:hover { color: var(--accent); }
+
+        .text-gray-400 { color: var(--text-muted) !important; }
+        .text-gray-300 { color: #efe8ff !important; }
+        .text-gray-600 { color: rgba(216, 207, 255, 0.6) !important; }
+
+        /* Custom scrollbar for better look */
+        ::-webkit-scrollbar { width: 8px; }
+
         ::-webkit-scrollbar-thumb {
-            background: #4b5563; /* Darker thumb */
+            background: rgba(140, 92, 246, 0.45);
             border-radius: 10px;
         }
+
         ::-webkit-scrollbar-track {
-            background: #1f2937; /* Dark track */
+            background: rgba(12, 10, 30, 0.65);
         }
+
         /* Style for the fixed header */
         #leaderboard-header-fixed {
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 25px rgba(9, 5, 30, 0.55);
         }
-        /* Rank Glow for Top 3 in the List */
-        .rank-glow-1 { text-shadow: 0 0 8px #facc15; }
-        .rank-glow-2 { text-shadow: 0 0 8px #9ca3af; }
-        .rank-glow-3 { text-shadow: 0 0 8px #b45309; }
 
-        /* --- ANIMATION STYLES --- */
-        /* Base state for scroll-in animation (starts invisible and slightly below) */
+        /* Rank Glow for Top 3 in the List */
+        .rank-glow-1 { text-shadow: 0 0 10px rgba(255, 196, 45, 0.9); }
+        .rank-glow-2 { text-shadow: 0 0 10px rgba(189, 197, 209, 0.8); }
+        .rank-glow-3 { text-shadow: 0 0 10px rgba(255, 138, 61, 0.8); }
+
         .leaderboard-item {
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-            /* Added transition for smoother hover effects */
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease;
+            box-shadow: 0 12px 30px rgba(8, 5, 24, 0.35);
+            background: rgba(18, 12, 35, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.06);
         }
-        /* Active state for when the element is observed */
+
+        .leaderboard-item:hover {
+            box-shadow: 0 20px 45px rgba(255, 95, 160, 0.25);
+        }
+
         .leaderboard-item.animate-in {
             opacity: 1;
             transform: translateY(0);
         }
-        /* --- END ANIMATION STYLES --- */
 
-        /* Mobile-first adjustment for fixed header navigation */
         @media (max-width: 767px) {
             #main-menu {
-                /* When menu is active, ensure it takes full width below the logo/toggle */
                 flex-direction: column;
                 align-items: center;
                 width: 100%;
             }
-            #main-menu li {
-                width: 100%; /* Make list items take full width on mobile */
-            }
+            #main-menu li { width: 100%; }
             #main-menu li a {
-                display: block; /* Make links fill the list item */
+                display: block;
                 text-align: center;
-                padding: 0.75rem 1rem; /* Add padding for touch targets */
+                padding: 0.75rem 1rem;
             }
-            /* Style the 'Donate Now' button to look like a full-width block link on mobile */
-            #main-menu li:last-child a {
-                margin-top: 0.5rem; /* Separator from other links */
-            }
+            #main-menu li:last-child a { margin-top: 0.5rem; }
         }
 
     </style>
@@ -122,21 +198,21 @@
 <body class="text-white min-h-screen flex flex-col">
 
     <!-- Header (Fixed Position) -->
-    <header class="bg-black/40 py-4 px-4 md:px-12 fixed w-full top-0 z-50 shadow-2xl backdrop-blur-sm">
+    <header class="glass-header py-4 px-4 md:px-12 fixed w-full top-0 z-50 backdrop-blur-sm">
         <nav class="container mx-auto flex justify-between items-center flex-wrap md:flex-nowrap">
             <div class="flex items-center justify-between w-full md:w-auto">
                 <a href="/" class="flex items-center space-x-2">
-                    <img src="https://raw.githubusercontent.com/ToratYosef/ToratYosef..github.io/refs/heads/main/assets/logos.jpeg" alt="Hillel Logo" class="h-14 sm:h-16 md:h-20 w-auto rounded-full ring-2 ring-sky-400 p-1">
+                    <img src="https://raw.githubusercontent.com/ToratYosef/ToratYosef..github.io/refs/heads/main/assets/logos.jpeg" alt="Hillel Logo" class="h-14 sm:h-16 md:h-20 w-auto rounded-full p-1 brand-ring">
                 </a>
                 <button id="menu-toggle" class="md:hidden text-white focus:outline-none" aria-label="Toggle menu">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                 </button>
             </div>
             <ul id="main-menu" class="hidden md:flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-8 text-base font-semibold w-full md:w-auto mt-4 md:mt-0">
-                <li><a href="/split-the-pot/" class="text-white hover:text-sky-400 transition-colors duration-300 block">Split the Pot</a></li>
-                <li><a href="/rolex-raffle/" class="text-white hover:text-sky-400 transition-colors duration-300 block">Rolex Raffle</a></li>
-                <li><a href="/leaderboard/" class="text-white hover:text-sky-400 transition-colors duration-300 block">Leaderboard</a></li>
-                <li><a href="/donate/" class="py-2 px-4 rounded-full bg-sky-400 text-black hover:bg-sky-500 transition-colors duration-300 font-bold block">Donate Now</a></li>
+                <li><a href="/split-the-pot/" class="text-white nav-link transition-colors duration-300 block">Split the Pot</a></li>
+                <li><a href="/rolex-raffle/" class="text-white nav-link transition-colors duration-300 block">Rolex Raffle</a></li>
+                <li><a href="/leaderboard/" class="text-white nav-link transition-colors duration-300 block">Leaderboard</a></li>
+                <li><a href="/donate/" class="py-2 px-5 rounded-full accent-button font-bold block">Donate Now</a></li>
             </ul>
         </nav>
     </header>
@@ -147,11 +223,11 @@
         <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
             
             <!-- Sub-Header and Search Section -->
-            <div class="mb-8 p-6 rounded-2xl">
+            <div class="mb-8 p-6 rounded-2xl card-surface">
                 <h1 class="font-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 text-center">
                     Hillel Fundraising Leaderboard
                 </h1>
-                <p class="text-center text-gray-400 mb-6 text-lg">
+                <p class="text-center mb-6 text-lg" style="color: var(--text-muted);">
                     See who's leading the charge for the Senior Fund! Data updates in real-time.
                 </p>
 
@@ -159,9 +235,9 @@
                 <div id="global-metrics-container" class="max-w-xs mx-auto mb-8">
                     
                     <!-- Total Referrers Card -->
-                    <div class="bg-card-dark p-6 rounded-xl shadow-2xl border-t-4 border-secondary-green/50 text-center">
-                        <i data-lucide="users" class="w-8 h-8 text-secondary-green mx-auto mb-2"></i>
-                        <p class="text-sm text-gray-400 uppercase font-medium">Total Referrers</p>
+                    <div class="metric-card p-6 rounded-xl text-center">
+                        <i data-lucide="users" class="w-8 h-8 mx-auto mb-2" style="color: var(--accent);"></i>
+                        <p class="text-sm uppercase font-medium" style="color: var(--text-muted);">Total Referrers</p>
                         <p id="total-referrers" class="bebas-neue text-4xl text-white font-bold">--</p>
                     </div>
                 </div>
@@ -173,13 +249,13 @@
                         type="text"
                         id="search-input"
                         placeholder="Search by User Name..."
-                        class="w-full pl-10 pr-4 py-3 border border-gray-700 bg-gray-800 text-white rounded-full focus:ring-2 focus:ring-accent-sky focus:border-accent-sky transition duration-150"
+                        class="w-full pl-10 pr-4 py-3 rounded-full search-input transition duration-150"
                     >
                 </div>
             </div>
 
             <!-- Leaderboard List Header for Sorting -->
-            <div class="hidden md:flex bg-card-dark/70 rounded-t-xl p-4 font-semibold text-gray-300 shadow-lg border-b border-gray-700 mb-2">
+            <div class="hidden md:flex rounded-t-xl p-4 font-semibold mb-2" style="background: rgba(18, 12, 35, 0.75); border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 18px 40px rgba(8,5,24,0.45); color: var(--text-muted);">
                 <!-- Rank/Change (Static width) -->
                 <div class="w-16 flex justify-center items-center">#</div> 
                 
@@ -237,44 +313,44 @@
             <!-- Leaderboard List -->
             <div id="leaderboard-list" class="space-y-4">
                 <!-- Loading State -->
-                <div class="flex flex-col items-center justify-center p-12 bg-gray-800 rounded-xl shadow-lg">
-                    <i data-lucide="loader-circle" class="w-8 h-8 text-accent-sky animate-spin mb-3"></i>
-                    <p class="text-gray-400">Loading real-time leaderboard data...</p>
+                <div class="flex flex-col items-center justify-center p-12 card-surface">
+                    <i data-lucide="loader-circle" class="w-8 h-8 animate-spin mb-3" style="color: var(--accent);"></i>
+                    <p style="color: var(--text-muted);">Loading real-time leaderboard data...</p>
                 </div>
             </div>
         </div>
     </main>
 
     <!-- Footer (UPDATED with full contact details) -->
-    <footer class="bg-black/60 py-8 mt-auto shadow-[0_-5px_15px_rgba(0,0,0,0.5)] border-t border-slate-800">
+    <footer class="glass-header py-8 mt-auto">
         <div class="container mx-auto px-4 text-center">
-            <h3 class="bebas-neue text-4xl font-bold text-sky-400 mb-6 border-b border-sky-400/20 pb-2 inline-block">Contact</h3>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8 text-gray-300 mb-8">
+            <h3 class="bebas-neue text-4xl font-bold mb-6 border-b pb-2 inline-block" style="color: var(--accent-alt); border-color: rgba(255, 95, 160, 0.35);">Contact</h3>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8 mb-8" style="color: var(--text-muted);">
                 <!-- Jack B. -->
-                <div class="bg-slate-800/50 p-4 rounded-lg">
+                <div class="contact-card">
                     <p class="font-bold text-white text-xl mb-1">Jack B.</p>
-                    <a href="tel:+13476750226" class="hover:text-sky-400 transition-colors">+1 (347) 675-0226</a>
+                    <a href="tel:+13476750226" class="transition-colors" style="color: var(--text-muted);">+1 (347) 675-0226</a>
                 </div>
                 <!-- Daniel K. -->
-                <div class="bg-slate-800/50 p-4 rounded-lg">
+                <div class="contact-card">
                     <p class="font-bold text-white text-xl mb-1">Daniel K.</p>
-                    <a href="tel:+19178580904" class="hover:text-sky-400 transition-colors">+1 (917) 858-0904</a>
+                    <a href="tel:+19178580904" class="transition-colors" style="color: var(--text-muted);">+1 (917) 858-0904</a>
                 </div>
                 <!-- Saul S. -->
-                <div class="bg-slate-800/50 p-4 rounded-lg">
+                <div class="contact-card">
                     <p class="font-bold text-white text-xl mb-1">Saul S.</p>
-                    <a href="tel:+19295845753" class="hover:text-sky-400 transition-colors">+1 (929) 584-5753</a>
+                    <a href="tel:+19295845753" class="transition-colors" style="color: var(--text-muted);">+1 (929) 584-5753</a>
                 </div>
                 <!-- David H. -->
-               <div class="bg-slate-800/50 p-4 rounded-lg">
+               <div class="contact-card">
                     <p class="font-bold text-white text-xl mb-1">David H.</p>
-                    <a href="tel:+16802340314" class="hover:text-sky-400 transition-colors">+1 (680) 234-0314</a>
+                    <a href="tel:+16802340314" class="transition-colors" style="color: var(--text-muted);">+1 (680) 234-0314</a>
                 </div>
             </div>
             <p class="text-sm text-gray-500 mt-8">
                 &copy; 2026 Hillel Senior Fund. All Rights Reserved.<br/>
                 Ranking is based on total money raised.<br/>
-                Website created by <a href="https://setton-source-68177.web.app" target="_blank" class="text-sky-400 hover:text-sky-300 transition-colors">Saul Setton</a>
+                Website created by <a href="https://setton-source-68177.web.app" target="_blank" class="footer-link transition-colors">Saul Setton</a>
             </p>
         </div>
     </footer>
