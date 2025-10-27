@@ -21,45 +21,154 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* Define the core dark color scheme for consistency */
-        .primary-dark { background-color: #0d1222; }
-        .accent-sky { color: #38bdf8; }
-        .card-dark { background-color: #1f2937; }
+        :root {
+            --bg-gradient: linear-gradient(160deg, #0b1120 0%, #111a2b 55%, #1c2538 100%);
+            --surface: rgba(20, 28, 44, 0.85);
+            --surface-strong: rgba(14, 20, 33, 0.92);
+            --accent: #f0b35e;
+            --accent-alt: #e08a3d;
+            --accent-secondary: #3b82f6;
+            --text-muted: #cbd5f5;
+        }
 
-        body { 
-            font-family: 'Inter', sans-serif; 
-            color: #ffffff; /* Default text white */
-            background-color: #0d1222;
-            background-image: linear-gradient(135deg, #0d1222 0%, #151a2d 100%);
+        .primary-dark { background-color: rgba(17, 25, 40, 0.9); }
+        .accent-sky { color: var(--accent); }
+        .card-dark { background-color: rgba(22, 30, 46, 0.82); }
+
+        .surface-panel {
+            background: linear-gradient(150deg, rgba(19, 29, 46, 0.92), rgba(28, 40, 60, 0.78));
+            border: 1px solid rgba(148, 163, 184, 0.14);
+            box-shadow: 0 18px 40px rgba(8, 13, 23, 0.45);
+        }
+
+        .accent-button {
+            background-image: linear-gradient(135deg, var(--accent) 0%, var(--accent-alt) 100%);
+            color: #111827 !important;
+            font-weight: 600;
+            box-shadow: 0 12px 28px rgba(12, 18, 30, 0.35);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+        }
+
+        .accent-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 32px rgba(15, 23, 42, 0.4);
+            filter: brightness(1.02);
+        }
+
+        .accent-outline {
+            border: 2px solid rgba(240, 179, 94, 0.65);
+            background: transparent;
+            color: #e2e8f0 !important;
+            font-weight: 600;
+            box-shadow: none;
+            transition: color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+        }
+
+        .accent-outline:hover {
+            background: rgba(240, 179, 94, 0.14);
+            box-shadow: 0 12px 26px rgba(15, 23, 42, 0.35);
+            transform: translateY(-2px);
+        }
+
+        .muted-button {
+            background: rgba(27, 36, 52, 0.78);
+            color: var(--text-muted);
+            border: 1px solid rgba(148, 163, 184, 0.14);
+            transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+        }
+
+        .muted-button:hover {
+            background: rgba(36, 47, 66, 0.88);
+            color: #f8fafc;
+            transform: translateY(-2px);
+        }
+
+        .danger-button {
+            background: linear-gradient(135deg, #fca5a5 0%, #f87171 100%);
+            color: #111827;
+            font-weight: 600;
+            box-shadow: 0 12px 28px rgba(12, 18, 30, 0.32);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .danger-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 32px rgba(15, 23, 42, 0.4);
+        }
+
+        .form-control {
+            background: rgba(30, 41, 59, 0.85);
+            border: 1px solid rgba(148, 163, 184, 0.18);
+            color: #f8fafc;
+            transition: border 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(240, 179, 94, 0.25);
+            outline: none;
+        }
+
+        .bg-gray-800 { background: rgba(19, 29, 46, 0.9) !important; border: 1px solid rgba(148, 163, 184, 0.14) !important; box-shadow: 0 18px 40px rgba(8, 13, 23, 0.45); }
+        .bg-gray-700 { background: rgba(27, 36, 52, 0.82) !important; border-color: rgba(148, 163, 184, 0.14) !important; }
+        .bg-gray-600 { background: rgba(36, 47, 66, 0.72) !important; border-color: rgba(148, 163, 184, 0.14) !important; }
+        .bg-gray-700\/50 { background: rgba(27, 36, 52, 0.55) !important; }
+        .text-gray-400 { color: var(--text-muted) !important; }
+        .text-blue-400, .text-blue-500 { color: #93c5fd !important; }
+        .text-green-400 { color: #86efac !important; }
+        .bg-blue-500, .bg-blue-600 { background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%) !important; color: #0f172a !important; font-weight: 600; }
+        .hover\:bg-blue-600:hover, .hover\:bg-blue-700:hover { filter: brightness(1.03); }
+        .bg-green-500, .bg-green-600 { background: linear-gradient(135deg, #bbf7d0 0%, #86efac 100%) !important; color: #0f172a !important; font-weight: 600; }
+        .hover\:bg-green-600:hover, .hover\:bg-green-700:hover { filter: brightness(1.03); }
+        .bg-sky-500, .bg-sky-600 { background: linear-gradient(135deg, #bae6fd 0%, #60a5fa 100%) !important; color: #0f172a !important; font-weight: 600; }
+        .hover\:bg-sky-600:hover, .hover\:bg-sky-700:hover { filter: brightness(1.03); }
+        .bg-red-500, .bg-red-600 { background: linear-gradient(135deg, #fecaca 0%, #f87171 100%) !important; color: #111827 !important; }
+        .hover\:bg-red-600:hover, .hover\:bg-red-700:hover { filter: brightness(1.03); }
+
+        .focus\:ring-sky-500:focus, .focus\:ring-blue-500:focus, .focus\:ring-purple-500:focus, .focus\:ring-red-500:focus {
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2) !important;
+        }
+        .focus\:border-sky-500:focus, .focus\:border-blue-500:focus, .focus\:border-purple-500:focus, .focus\:border-red-500:focus {
+            border-color: #60a5fa !important;
+        }
+
+        .border-gray-600, .border-gray-700 { border-color: rgba(148, 163, 184, 0.18) !important; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #f8fafc;
+            background-image: var(--bg-gradient);
         }
         .dashboard-card {
-            background-color: #1f2937; /* Dark card color */
+            background: linear-gradient(135deg, rgba(23, 32, 48, 0.88), rgba(30, 41, 59, 0.7));
             border-radius: 0.75rem;
-            box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05); /* Darker shadow, subtle white border */
-            transition: all 0.3s ease;
+            box-shadow: 0 18px 38px rgba(8, 13, 23, 0.45);
+            border: 1px solid rgba(148, 163, 184, 0.14);
+            transition: all 0.25s ease;
         }
         .tab-button.active {
-            border-bottom: 3px solid #38bdf8; /* Tailwind sky-400 */
-            color: #38bdf8; /* Active text is sky */
+            border-bottom: 3px solid var(--accent);
+            color: var(--accent);
             font-weight: 600;
         }
+        .spinner { animation: spin 0.8s linear infinite; border-color: rgba(255, 255, 255, 0.2); border-top-color: var(--accent); }
         /* Make table text slightly smaller on mobile for density */
         .data-table th {
             text-align: left;
-            padding: 0.5rem 0.5rem; /* Reduced padding for mobile */
-            font-size: 0.65rem; /* Smaller font size */
+            padding: 0.5rem 0.5rem;
+            font-size: 0.65rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            color: #9ca3af; /* Light gray text */
-            background-color: #374151; /* Darker header background */
-            border-bottom: 2px solid #4b5563; /* Dark border */
+            color: var(--text-muted);
+            background-color: rgba(24, 32, 48, 0.85);
+            border-bottom: 2px solid rgba(148, 163, 184, 0.16);
             cursor: pointer;
         }
         .data-table td {
-            padding: 0.75rem 0.5rem; /* Reduced padding for mobile */
-            font-size: 0.75rem; /* Smaller font size */
-            border-bottom: 1px solid #374151; /* Dark border */
-            color: #d1d5db; /* Light gray text for data */
+            padding: 0.75rem 0.5rem;
+            font-size: 0.75rem;
+            border-bottom: 1px solid rgba(71, 85, 105, 0.45);
+            color: #e2e8f0;
         }
         .modal-overlay {
             background-color: rgba(0, 0, 0, 0.75); /* Darker overlay */
@@ -75,69 +184,74 @@
         .sort-header.active .sort-icon { display: inline-block; }
 
         .conversion-table-row:hover {
-            background-color: #2a3443;
+            background-color: rgba(30, 41, 59, 0.75);
             cursor: pointer;
         }
         .conversion-table-row.selected {
-             background-color: #374151; /* Tailwind gray-700 */
-             border-left: 4px solid #38bdf8;
+             background-color: rgba(240, 179, 94, 0.16);
+             border-left: 4px solid var(--accent);
         }
+        .bg-sky-400\/20 { background-color: rgba(59, 130, 246, 0.18) !important; }
+        .text-sky-300 { color: #93c5fd !important; }
+        .text-gray-300 { color: var(--text-muted) !important; }
+        .text-sky-400 { color: #60a5fa !important; }
+        .text-sky-500 { color: var(--accent) !important; }
     </style>
 </head>
 <body class="min-h-screen">
 
     <!-- Global Loading Overlay -->
-    <div id="globalLoadingOverlay" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex flex-col items-center justify-center gap-4 hidden">
-        <div class="animate-spin w-10 h-10 border-4 border-t-4 border-sky-400 border-opacity-20 rounded-full"></div>
+    <div id="globalLoadingOverlay" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex flex-col items-center justify-center gap-4 hidden">
+        <div class="spinner w-10 h-10 border-4 border-transparent rounded-full"></div>
         <p id="globalSpinnerText" class="text-white font-semibold">Checking authorization...</p>
     </div>
 
     <!-- Custom Popup Modal (Alert/Success) -->
     <div id="customPopupOverlay" class="fixed inset-0 z-[101] modal-overlay flex items-center justify-center p-4 hidden">
-        <div id="customPopup" class="bg-gray-800 p-6 rounded-lg shadow-2xl max-w-xs sm:max-w-sm w-full text-center scale-95 transition-all duration-300">
-            <h2 id="popupTitle" class="text-xl sm:text-2xl font-bold text-sky-400 mb-3"></h2>
-            <p id="popupMessage" class="text-gray-300 mb-5 text-sm sm:text-base"></p>
-            <button id="popupCloseButton" class="w-full py-2 rounded-lg bg-sky-500 text-black font-semibold hover:bg-sky-600 transition-colors">OK</button>
+        <div id="customPopup" class="p-6 rounded-lg shadow-2xl max-w-xs sm:max-w-sm w-full text-center scale-95 transition-all duration-300" style="background: linear-gradient(150deg, rgba(19, 29, 46, 0.92), rgba(28, 40, 60, 0.78)); border: 1px solid rgba(148,163,184,0.14);">
+            <h2 id="popupTitle" class="text-xl sm:text-2xl font-bold mb-3" style="color: var(--accent-alt);"></h2>
+            <p id="popupMessage" class="mb-5 text-sm sm:text-base" style="color: var(--text-muted);"></p>
+            <button id="popupCloseButton" class="w-full py-2 rounded-lg accent-button">OK</button>
         </div>
     </div>
     
     <!-- NEW: Export Confirmation Modal -->
     <div id="exportConfirmationModalOverlay" class="fixed inset-0 z-50 modal-overlay flex items-center justify-center p-4 hidden">
-        <div class="bg-gray-800 p-6 rounded-lg shadow-2xl max-w-sm w-full">
-            <h2 class="text-xl sm:text-2xl font-bold text-blue-400 mb-4">Export <span id="exportTabName"></span> Data</h2>
-            <p class="text-gray-300 mb-6 text-sm sm:text-base">
+        <div class="surface-panel p-6 rounded-lg shadow-2xl max-w-sm w-full">
+            <h2 class="text-xl sm:text-2xl font-bold mb-4" style="color: var(--accent-alt);">Export <span id="exportTabName"></span> Data</h2>
+            <p class="mb-6 text-sm sm:text-base" style="color: var(--text-muted);">
                 How would you like to export the data from the current table?
             </p>
             <div class="space-y-3">
-                <button type="button" id="exportAllRowsButton" class="w-full py-3 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors">
+                <button type="button" id="exportAllRowsButton" class="w-full py-3 rounded-lg accent-button">
                     Export ALL Rows (Ignore Filters)
                 </button>
-                <button type="button" id="exportFilteredRowsButton" class="w-full py-3 rounded-lg bg-sky-600 text-black font-semibold hover:bg-sky-700 transition-colors">
+                <button type="button" id="exportFilteredRowsButton" class="w-full py-3 rounded-lg accent-outline">
                     Export CURRENTLY FILTERED Rows
                 </button>
             </div>
             <div class="pt-6 flex justify-end">
-                <button type="button" id="closeExportConfirmationModal" class="px-4 py-2 text-gray-300 bg-gray-600 rounded-lg hover:bg-gray-500 transition-colors">Cancel</button>
+                <button type="button" id="closeExportConfirmationModal" class="px-4 py-2 rounded-lg muted-button">Cancel</button>
             </div>
         </div>
     </div>
 
     <!-- Batch Password Reset Modal (Super Admin Only) -->
     <div id="batchResetModalOverlay" class="fixed inset-0 z-50 modal-overlay flex items-center justify-center p-4 hidden">
-        <div class="bg-gray-800 p-6 rounded-lg shadow-2xl max-w-xs sm:max-w-md w-full">
-            <h2 class="text-xl sm:text-2xl font-bold text-red-400 mb-4">Batch Password Reset</h2>
-            <p class="text-gray-300 mb-4 text-sm sm:text-base">
-                You are about to reset the password for <span id="selectedUserCount" class="font-bold text-red-400">0</span> user(s).
+        <div class="surface-panel p-6 rounded-lg shadow-2xl max-w-xs sm:max-w-md w-full">
+            <h2 class="text-xl sm:text-2xl font-bold mb-4" style="color: #f87171;">Batch Password Reset</h2>
+            <p class="mb-4 text-sm sm:text-base" style="color: var(--text-muted);">
+                You are about to reset the password for <span id="selectedUserCount" class="font-bold" style="color: #f87171;">0</span> user(s).
             </p>
             <form id="batchResetForm" class="space-y-4">
                 <div>
-                    <label for="batch-new-password" class="block text-sm font-medium text-gray-300">Temporary New Password (min 6 chars)</label>
+                    <label for="batch-new-password" class="block text-sm font-medium" style="color: var(--text-muted);">Temporary New Password (min 6 chars)</label>
                     <!-- FIX: Added aut.complete="new-password" -->
-                    <input type="password" id="batch-new-password" aut.complete="new-password" placeholder="Enter new password" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-red-500 focus:border-red-500 bg-gray-700 text-white" required minlength="6">
+                    <input type="password" id="batch-new-password" aut.complete="new-password" placeholder="Enter new password" class="form-control w-full p-3 rounded-lg" required minlength="6">
                 </div>
                 <div class="pt-4 flex justify-end space-x-3">
-                    <button type="button" id="closeBatchResetModal" class="px-4 py-2 text-gray-300 bg-gray-600 rounded-lg hover:bg-gray-500 transition-colors">Cancel</button>
-                    <button type="submit" id="submitBatchReset" class="px-4 py-2 text-white bg-red-500 rounded-lg hover:bg-red-600 transition-colors disabled:opacity-50">
+                    <button type="button" id="closeBatchResetModal" class="px-4 py-2 rounded-lg muted-button">Cancel</button>
+                    <button type="submit" id="submitBatchReset" class="px-4 py-2 rounded-lg danger-button disabled:opacity-50">
                         Confirm Reset
                     </button>
                 </div>
@@ -147,23 +261,23 @@
 
     <!-- Manual Sale Modal (Super Admin Only) -->
     <div id="manualSaleModalOverlay" class="fixed inset-0 z-50 modal-overlay flex items-center justify-center p-4 hidden">
-        <div class="bg-gray-800 p-6 rounded-lg shadow-2xl max-w-xs sm:max-w-md w-full">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">Add Manual Raffle Sale (SA Only)</h2>
+        <div class="surface-panel p-6 rounded-lg shadow-2xl max-w-xs sm:max-w-md w-full">
+            <h2 class="text-xl sm:text-2xl font-bold mb-4">Add Manual Raffle Sale (SA Only)</h2>
             <form id="manualSaleForm" class="space-y-4">
                 <div>
-                    <input type="text" id="manual-name" placeholder="Customer Full Name" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white" required>
+                    <input type="text" id="manual-name" placeholder="Customer Full Name" class="form-control w-full p-3 rounded-lg" required>
                 </div>
                 <div>
-                    <input type="email" id="manual-email" placeholder="Customer Email (Optional)" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white">
+                    <input type="email" id="manual-email" placeholder="Customer Email (Optional)" class="form-control w-full p-3 rounded-lg">
                 </div>
                 <div>
-                    <input type="tel" id="manual-phone" placeholder="Customer Phone (Optional)" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white">
+                    <input type="tel" id="manual-phone" placeholder="Customer Phone (Optional)" class="form-control w-full p-3 rounded-lg">
                 </div>
-                
+
                 <!-- NEW: Raffle Type Dropdown (Split the Pot/Rolex Raffle) -->
                 <div class="space-y-1">
-                    <label for="manual-entry-type" class="block text-sm font-medium text-gray-300">Sale Type</label>
-                    <select id="manual-entry-type" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white" required>
+                    <label for="manual-entry-type" class="block text-sm font-medium" style="color: var(--text-muted);">Sale Type</label>
+                    <select id="manual-entry-type" class="form-control w-full p-3 rounded-lg" required>
                         <option value="raffle">Split The Pot</option>
                         <option value="rolex_raffle">Rolex Raffle</option>
                     </select>
@@ -171,16 +285,16 @@
                 <!-- END NEW -->
 
                 <div class="flex space-x-2 sm:space-x-4">
-                    <input type="number" id="manual-tickets" placeholder="Tickets Bought" min="1" class="w-1/2 p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white" required>
-                    <input type="number" id="manual-amount" placeholder="Amount Paid ($)" step="0.01" min="0.01" class="w-1/2 p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white" required>
+                    <input type="number" id="manual-tickets" placeholder="Tickets Bought" min="1" class="form-control w-1/2 p-3 rounded-lg" required>
+                    <input type="number" id="manual-amount" placeholder="Amount Paid ($)" step="0.01" min="0.01" class="form-control w-1/2 p-3 rounded-lg" required>
                 </div>
                 <div id="manual-referrer-container">
-                    <input type="text" id="manual-refId" placeholder="Referrer ID (e.g., A1B2C3)" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white">
-                    <p class="text-xs text-gray-400 mt-1">Credited to this Ref ID.</p>
+                    <input type="text" id="manual-refId" placeholder="Referrer ID (e.g., A1B2C3)" class="form-control w-full p-3 rounded-lg">
+                    <p class="text-xs mt-1" style="color: var(--text-muted);">Credited to this Ref ID.</p>
                 </div>
                 <div class="pt-4 flex justify-end space-x-3">
-                    <button type="button" id="closeManualSaleModal" class="px-4 py-2 text-gray-300 bg-gray-600 rounded-lg hover:bg-gray-500 transition-colors">Cancel</button>
-                    <button type="submit" id="submitManualSale" class="px-4 py-2 text-black bg-sky-500 rounded-lg hover:bg-sky-600 transition-colors font-semibold">Add Sale</button>
+                    <button type="button" id="closeManualSaleModal" class="px-4 py-2 rounded-lg muted-button">Cancel</button>
+                    <button type="submit" id="submitManualSale" class="px-4 py-2 rounded-lg accent-button font-semibold">Add Sale</button>
                 </div>
             </form>
         </div>
@@ -188,28 +302,28 @@
     
     <!-- NEW: Manual Donation Modal (Super Admin Only) -->
     <div id="manualDonationModalOverlay" class="fixed inset-0 z-50 modal-overlay flex items-center justify-center p-4 hidden">
-        <div class="bg-gray-800 p-6 rounded-lg shadow-2xl max-w-xs sm:max-w-md w-full">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">Add Manual General Donation (SA Only)</h2>
+        <div class="surface-panel p-6 rounded-lg shadow-2xl max-w-xs sm:max-w-md w-full">
+            <h2 class="text-xl sm:text-2xl font-bold mb-4">Add Manual General Donation (SA Only)</h2>
             <form id="manualDonationForm" class="space-y-4">
                 <div>
-                    <input type="text" id="donation-name" placeholder="Donor Full Name" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white" required>
+                    <input type="text" id="donation-name" placeholder="Donor Full Name" class="form-control w-full p-3 rounded-lg" required>
                 </div>
                 <div>
-                    <input type="email" id="donation-email" placeholder="Donor Email (Optional)" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white">
+                    <input type="email" id="donation-email" placeholder="Donor Email (Optional)" class="form-control w-full p-3 rounded-lg">
                 </div>
                 <div>
-                    <input type="tel" id="donation-phone" placeholder="Donor Phone (Optional)" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white">
+                    <input type="tel" id="donation-phone" placeholder="Donor Phone (Optional)" class="form-control w-full p-3 rounded-lg">
                 </div>
                 <div>
-                    <input type="number" id="donation-amount" placeholder="Donation Amount ($)" step="0.01" min="0.01" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white" required>
+                    <input type="number" id="donation-amount" placeholder="Donation Amount ($)" step="0.01" min="0.01" class="form-control w-full p-3 rounded-lg" required>
                 </div>
                 <div>
-                    <input type="text" id="donation-refId" placeholder="Referrer ID to Credit (e.g., A1B2C3)" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white">
-                    <p class="text-xs text-gray-400 mt-1">Credited to this Ref ID.</p>
+                    <input type="text" id="donation-refId" placeholder="Referrer ID to Credit (e.g., A1B2C3)" class="form-control w-full p-3 rounded-lg">
+                    <p class="text-xs mt-1" style="color: var(--text-muted);">Credited to this Ref ID.</p>
                 </div>
                 <div class="pt-4 flex justify-end space-x-3">
-                    <button type="button" id="closeManualDonationModal" class="px-4 py-2 text-gray-300 bg-gray-600 rounded-lg hover:bg-gray-500 transition-colors">Cancel</button>
-                    <button type="submit" id="submitManualDonation" class="px-4 py-2 text-white bg-green-500 rounded-lg hover:bg-green-600 transition-colors font-semibold">Add Donation</button>
+                    <button type="button" id="closeManualDonationModal" class="px-4 py-2 rounded-lg muted-button">Cancel</button>
+                    <button type="submit" id="submitManualDonation" class="px-4 py-2 rounded-lg accent-button font-semibold">Add Donation</button>
                 </div>
             </form>
         </div>
@@ -217,34 +331,34 @@
 
     <!-- Edit Donation Modal (Super Admin Only) -->
     <div id="editDonationModalOverlay" class="fixed inset-0 z-50 modal-overlay flex items-center justify-center p-4 hidden">
-        <div class="bg-gray-800 p-6 rounded-lg shadow-2xl max-w-xs sm:max-w-md w-full">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">Edit Donation Entry</h2>
+        <div class="surface-panel p-6 rounded-lg shadow-2xl max-w-xs sm:max-w-md w-full">
+            <h2 class="text-xl sm:text-2xl font-bold mb-4">Edit Donation Entry</h2>
             <form id="editDonationForm" class="space-y-4">
                 <input type="hidden" id="edit-donation-id">
                 <div>
-                    <label for="edit-donation-name" class="block text-sm font-medium text-gray-300">Donor Full Name</label>
-                    <input type="text" id="edit-donation-name" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white" required>
+                    <label for="edit-donation-name" class="block text-sm font-medium" style="color: var(--text-muted);">Donor Full Name</label>
+                    <input type="text" id="edit-donation-name" class="form-control w-full p-3 rounded-lg" required>
                 </div>
                 <div>
-                    <label for="edit-donation-email" class="block text-sm font-medium text-gray-300">Email</label>
-                    <input type="email" id="edit-donation-email" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white">
+                    <label for="edit-donation-email" class="block text-sm font-medium" style="color: var(--text-muted);">Email</label>
+                    <input type="email" id="edit-donation-email" class="form-control w-full p-3 rounded-lg">
                 </div>
                 <div>
-                    <label for="edit-donation-phone" class="block text-sm font-medium text-gray-300">Phone</label>
-                    <input type="tel" id="edit-donation-phone" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white">
+                    <label for="edit-donation-phone" class="block text-sm font-medium" style="color: var(--text-muted);">Phone</label>
+                    <input type="tel" id="edit-donation-phone" class="form-control w-full p-3 rounded-lg">
                 </div>
                 <div>
-                    <label for="edit-donation-amount" class="block text-sm font-medium text-gray-300">Donation Amount ($)</label>
-                    <input type="number" id="edit-donation-amount" step="0.01" min="0.01" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white" required>
+                    <label for="edit-donation-amount" class="block text-sm font-medium" style="color: var(--text-muted);">Donation Amount ($)</label>
+                    <input type="number" id="edit-donation-amount" step="0.01" min="0.01" class="form-control w-full p-3 rounded-lg" required>
                 </div>
                 <div>
-                    <label for="edit-donation-refId" class="block text-sm font-medium text-gray-300">Referrer ID to Credit</label>
-                    <input type="text" id="edit-donation-refId" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white" placeholder="Optional">
-                    <p class="text-xs text-gray-400 mt-1">Leave blank to remove referrer credit.</p>
+                    <label for="edit-donation-refId" class="block text-sm font-medium" style="color: var(--text-muted);">Referrer ID to Credit</label>
+                    <input type="text" id="edit-donation-refId" class="form-control w-full p-3 rounded-lg" placeholder="Optional">
+                    <p class="text-xs mt-1" style="color: var(--text-muted);">Leave blank to remove referrer credit.</p>
                 </div>
                 <div class="pt-4 flex justify-end space-x-3">
-                    <button type="button" id="closeEditDonationModal" class="px-4 py-2 text-gray-300 bg-gray-600 rounded-lg hover:bg-gray-500 transition-colors">Cancel</button>
-                    <button type="submit" class="px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600 transition-colors">Save Changes</button>
+                    <button type="button" id="closeEditDonationModal" class="px-4 py-2 rounded-lg muted-button">Cancel</button>
+                    <button type="submit" class="px-4 py-2 rounded-lg accent-button">Save Changes</button>
                 </div>
             </form>
         </div>
@@ -252,35 +366,40 @@
 
     <!-- Edit Raffle Sale Modal (Super Admin Only) -->
     <div id="editSaleModalOverlay" class="fixed inset-0 z-50 modal-overlay flex items-center justify-center p-4 hidden">
-        <div class="bg-gray-800 p-6 rounded-lg shadow-2xl max-w-xs sm:max-w-md w-full">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">Edit Raffle Sale Entry </h2>
+        <div class="surface-panel p-6 rounded-lg shadow-2xl max-w-xs sm:max-w-md w-full">
+            <h2 class="text-xl sm:text-2xl font-bold mb-4">Edit Raffle Sale Entry </h2>
             <form id="editSaleForm" class="space-y-4">
                 <input type="hidden" id="edit-sale-id">
                 <div>
-                    <label for="edit-name" class="block text-sm font-medium text-gray-300">Customer Full Name</label>
-                    <input type="text" id="edit-name" placeholder="Full Name" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white" required>
+                    <label for="edit-name" class="block text-sm font-medium" style="color: var(--text-muted);">Customer Full Name</label>
+                    <input type="text" id="edit-name" placeholder="Full Name" class="form-control w-full p-3 rounded-lg" required>
                 </div>
                 <div>
-                    <label for="edit-email" class="block text-sm font-medium text-gray-300">Email</label>
-                    <input type="email" id="edit-email" placeholder="Email (Optional)" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white">
+                    <label for="edit-email" class="block text-sm font-medium" style="color: var(--text-muted);">Email</label>
+                    <input type="email" id="edit-email" placeholder="Email (Optional)" class="form-control w-full p-3 rounded-lg">
                 </div>
                 <div>
-                    <label for="edit-phone" class="block text-sm font-medium text-gray-300">Phone</label>
-                    <input type="tel" id="edit-phone" placeholder="Phone (Optional)" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white">
+                    <label for="edit-phone" class="block text-sm font-medium" style="color: var(--text-muted);">Phone</label>
+                    <input type="tel" id="edit-phone" placeholder="Phone (Optional)" class="form-control w-full p-3 rounded-lg">
                 </div>
                 <div class="flex space-x-2 sm:space-x-4">
                     <div class="w-1/2">
-                        <label for="edit-tickets" class="block text-sm font-medium text-gray-300">Tickets Bought</label>
-                        <input type="number" id="edit-tickets" placeholder="Tickets Bought" min="1" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white" required>
+                        <label for="edit-tickets" class="block text-sm font-medium" style="color: var(--text-muted);">Tickets Bought</label>
+                        <input type="number" id="edit-tickets" placeholder="Tickets Bought" min="1" class="form-control w-full p-3 rounded-lg" required>
                     </div>
                     <div class="w-1/2">
-                        <label for="edit-amount" class="block text-sm font-medium text-gray-300">Amount Paid ($)</label>
-                        <input type="number" id="edit-amount" placeholder="Amount Paid ($)" step="0.01" min="0.01" class="w-full p-3 border border-gray-600 rounded-lg focus:ring-sky-500 focus:border-sky-500 bg-gray-700 text-white" required>
+                        <label for="edit-amount" class="block text-sm font-medium" style="color: var(--text-muted);">Amount Paid ($)</label>
+                        <input type="number" id="edit-amount" placeholder="Amount Paid ($)" step="0.01" min="0.01" class="form-control w-full p-3 rounded-lg" required>
                     </div>
                 </div>
+                <div>
+                    <label for="edit-referrer" class="block text-sm font-medium" style="color: var(--text-muted);">Referrer ID to Credit</label>
+                    <input type="text" id="edit-referrer" placeholder="Optional" class="form-control w-full p-3 rounded-lg">
+                    <p class="text-xs mt-1" style="color: var(--text-muted);">Leave blank to remove referrer credit.</p>
+                </div>
                 <div class="pt-4 flex justify-end space-x-3">
-                    <button type="button" id="closeEditSaleModal" class="px-4 py-2 text-gray-300 bg-gray-600 rounded-lg hover:bg-gray-500 transition-colors">Cancel</button>
-                    <button type="submit" id="submitEditSale" class="px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600 transition-colors">Save Changes</button>
+                    <button type="button" id="closeEditSaleModal" class="px-4 py-2 rounded-lg muted-button">Cancel</button>
+                    <button type="submit" id="submitEditSale" class="px-4 py-2 rounded-lg accent-button">Save Changes</button>
                 </div>
             </form>
         </div>

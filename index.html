@@ -88,48 +88,173 @@
     <!-- End Schema Markup. -->
     
     <style>
-        /* Apply background gradient from the preferred styling */
+        :root {
+            --bg-gradient: linear-gradient(160deg, #0b1120 0%, #111a2b 55%, #1c2538 100%);
+            --surface: rgba(20, 28, 44, 0.85);
+            --surface-strong: rgba(14, 20, 33, 0.92);
+            --surface-soft: rgba(32, 41, 58, 0.6);
+            --accent: #f0b35e;
+            --accent-alt: #e08a3d;
+            --accent-secondary: #3b82f6;
+            --accent-glow: rgba(240, 179, 94, 0.25);
+            --text-muted: #cbd5f5;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0d1222;
-            background-image: linear-gradient(135deg, #0d1222 0%, #151a2d 100%);
+            background-image: var(--bg-gradient);
+            color: #ffffff;
         }
+
         .bebas-neue {
             font-family: 'Bebas Neue', sans-serif;
         }
-        /* SPA content switching: Only 'home' is expected to be visible in this mode */
+
+        .glass-header {
+            background: linear-gradient(120deg, rgba(17, 25, 40, 0.95), rgba(24, 35, 54, 0.8));
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+            box-shadow: 0 12px 30px rgba(8, 13, 23, 0.45);
+        }
+
+        .nav-link:hover {
+            color: var(--accent) !important;
+        }
+
+        .brand-ring {
+            box-shadow: 0 12px 30px rgba(9, 14, 24, 0.35);
+            border: 2px solid rgba(148, 163, 184, 0.35) !important;
+        }
+
         .page-content {
             display: none;
         }
+
         .page-content.active {
             display: block;
         }
-        /* Mobile-first adjustment for header navigation for full-width links */
-        @media (max-width: 767px) {
-            #main-menu li {
-                width: 100%; /* Make list items take full width on mobile */
-            }
-            #main-menu li a {
-                text-align: center;
-                padding: 0.75rem 1rem; /* Add padding for touch targets */
-            }
+
+        .hero-overlay {
+            background: radial-gradient(circle at top, rgba(59, 130, 246, 0.18), transparent 65%);
         }
 
-        /* Custom "Juice" - Glow effect on hover for the cards */
+        .accent-subheading {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        .accent-button {
+            background-image: linear-gradient(135deg, var(--accent) 0%, var(--accent-alt) 100%);
+            color: #111827 !important;
+            box-shadow: 0 12px 28px rgba(12, 18, 30, 0.35);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+        }
+
+        .accent-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 32px rgba(15, 23, 42, 0.4);
+            filter: brightness(1.02);
+        }
+
+        .accent-outline {
+            border: 2px solid rgba(240, 179, 94, 0.65);
+            background: transparent;
+            color: #e2e8f0 !important;
+            box-shadow: none;
+            transition: color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+        }
+
+        .accent-outline:hover {
+            background: rgba(240, 179, 94, 0.12);
+            box-shadow: 0 12px 26px rgba(15, 23, 42, 0.35);
+            transform: translateY(-2px);
+        }
+
+        .feature-card {
+            background: var(--surface);
+            border: 1px solid rgba(148, 163, 184, 0.18);
+            box-shadow: 0 18px 40px rgba(8, 13, 23, 0.45);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top, rgba(59, 130, 246, 0.14), transparent 65%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover::after {
+            opacity: 1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 24px 48px rgba(8, 13, 23, 0.5);
+        }
+
+        .support-panel {
+            background: linear-gradient(120deg, rgba(19, 29, 46, 0.88), rgba(28, 40, 60, 0.72));
+            border: 1px solid rgba(148, 163, 184, 0.14);
+            box-shadow: inset 0 0 20px rgba(59, 130, 246, 0.12);
+        }
+
+        .footer-link {
+            color: var(--accent);
+        }
+
+        .footer-link:hover {
+            color: var(--accent-alt);
+        }
+
+        .contact-card {
+            background: var(--surface-soft);
+            padding: 1.25rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(148, 163, 184, 0.14);
+        }
+
+        .input-field {
+            background: rgba(30, 41, 59, 0.85);
+            border: 1px solid rgba(148, 163, 184, 0.18);
+            color: #f8fafc;
+            transition: border 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .input-field:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(240, 179, 94, 0.25);
+            outline: none;
+        }
+
         .glow-card:hover {
-            box-shadow: 0 0 25px rgba(56, 189, 248, 0.5); /* Stronger sky glow */
+            box-shadow: 0 14px 30px var(--accent-glow);
+        }
+
+        @media (max-width: 767px) {
+            #main-menu li {
+                width: 100%;
+            }
+
+            #main-menu li a {
+                text-align: center;
+                padding: 0.75rem 1rem;
+            }
         }
     </style>
 </head>
 <body class="text-white min-h-screen flex flex-col">
 
     <!-- Header (Updated with mobile toggle and glass effect) -->
-    <header class="bg-black/40 py-4 px-4 md:px-12 fixed w-full top-0 z-50 shadow-2xl backdrop-blur-sm">
+    <header class="glass-header py-4 px-4 md:px-12 fixed w-full top-0 z-50 backdrop-blur-sm">
         <nav class="container mx-auto flex justify-between items-center flex-wrap md:flex-nowrap">
             <div class="flex items-center justify-between w-full md:w-auto">
                 <!-- Logo: Increased touch target and added ring for visual pop -->
                 <a href="/" class="flex items-center space-x-2">
-                    <img src="https://raw.githubusercontent.com/ToratYosef/ToratYosef..github.io/refs/heads/main/assets/logos.jpeg" alt="Hillel Logo" class="h-14 sm:h-16 md:h-20 w-auto rounded-full ring-2 ring-sky-400 p-1">
+                    <img src="https://raw.githubusercontent.com/ToratYosef/ToratYosef..github.io/refs/heads/main/assets/logos.jpeg" alt="Hillel Logo" class="h-14 sm:h-16 md:h-20 w-auto rounded-full p-1 brand-ring">
                 </a>
                 <!-- Mobile Menu Toggle Button -->
                 <button id="menu-toggle" class="md:hidden text-white focus:outline-none" aria-label="Toggle menu">
@@ -139,12 +264,12 @@
 
             <!-- Navigation Links (Toggable on mobile, always visible on desktop) -->
             <ul id="main-menu" class="hidden md:flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-8 text-base font-semibold w-full md:w-auto mt-4 md:mt-0">
-                <li><a href="/split-the-pot/" class="text-white hover:text-sky-400 transition-colors duration-300 block">Split the Pot</a></li>
-                <li><a href="/rolex-raffle/" class="text-white hover:text-sky-400 transition-colors duration-300 block">Rolex Raffle</a></li>
+                <li><a href="/split-the-pot/" class="text-white nav-link transition-colors duration-300 block">Split the Pot</a></li>
+                <li><a href="/rolex-raffle/" class="text-white nav-link transition-colors duration-300 block">Rolex Raffle</a></li>
                 <!-- Leaderboard Link -->
-                <li><a href="/leaderboard/" class="text-white hover:text-sky-400 transition-colors duration-300 block">Leaderboard</a></li>
+                <li><a href="/leaderboard/" class="text-white nav-link transition-colors duration-300 block">Leaderboard</a></li>
                 <!-- Donate button styling updated for block display on mobile -->
-                <li><a href="/donate/" class="py-2 px-4 rounded-full bg-sky-400 text-black hover:bg-sky-500 transition-colors duration-300 font-bold block">Donate Now</a></li>
+                <li><a href="/donate/" class="py-2 px-5 rounded-full accent-button font-bold block">Donate Now</a></li>
             </ul>
         </nav>
     </header>
@@ -157,8 +282,8 @@
             <!-- Hero Section -->
             <div class="relative bg-cover bg-center h-screen min-h-[600px]" style="background-image: url('https://raw.githubusercontent.com/ToratYosef/ToratYosef..github.io/refs/heads/main/assets/kotel.jpg');">
                 <!-- Overlay re-added to darken image for text visibility -->
-                <div class="absolute inset-0 bg-slate-950 opacity-60"></div>
-                
+                <div class="absolute inset-0 bg-slate-950/70 hero-overlay"></div>
+
                 <div class="relative z-10 flex flex-col items-center justify-center h-full text-center p-4">
                     <h1 class="bebas-neue text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold text-white mb-4 drop-shadow-lg">
                         Support the Hillel Senior Fund
@@ -168,27 +293,25 @@
                     </p>
                     
                     <!-- New Button Header/CTA -->
-                    <h2 class="bebas-neue text-2xl sm:text-3xl font-bold text-sky-400 mb-6 drop-shadow-md">
+                    <h2 class="bebas-neue text-2xl sm:text-3xl font-bold mb-6 drop-shadow-md accent-subheading">
                         Choose How You Support Our Seniors:
                     </h2>
-                    
+
                     <!-- Dual Buttons for Spin and Split the Pot - Outline and Centered -->
                     <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
                         <!-- Rolex Raffle Button - Updated with flexbox for perfect centering -->
-                        <a id="spin-action-button" href="/rolex-raffle/" 
-                            class="w-full sm:w-60 py-4 px-8 md:text-lg lg:text-xl rounded-full 
-                                   bg-transparent border-2 border-sky-400 text-white font-bold 
-                                   shadow-lg transform transition-all duration-300 hover:scale-105 
-                                   hover:bg-sky-400 hover:text-slate-950
+                        <a id="spin-action-button" href="/rolex-raffle/"
+                            class="w-full sm:w-60 py-4 px-8 md:text-lg lg:text-xl rounded-full
+                                   accent-outline font-bold
+                                   shadow-lg transform transition-all duration-300 hover:scale-105
                                    flex items-center justify-center">
                             Rolex Raffle
                         </a>
                         <!-- Buy Split The Pot Tickets Button - Updated with flexbox for perfect centering -->
-                        <a id="split-action-button" href="/donate/" 
-                            class="w-full sm:w-60 py-4 px-8 md:text-lg lg:text-xl rounded-full 
-                                   bg-transparent border-2 border-sky-400 text-white font-bold 
-                                   shadow-lg transform transition-all duration-300 hover:scale-105 
-                                   hover:bg-sky-400 hover:text-slate-950
+                        <a id="split-action-button" href="/donate/"
+                            class="w-full sm:w-60 py-4 px-8 md:text-lg lg:text-xl rounded-full
+                                   accent-button font-bold
+                                   shadow-lg transform transition-all duration-300 hover:scale-105
                                    flex items-center justify-center">
                             Donate Now!
                         </a>
@@ -203,42 +326,42 @@
                         Why Your Support Matters
                     </h2>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-                        
+
                         <!-- Reason 1: Israel Trip (Airplane Icon) -->
-                        <div class="bg-slate-800 p-8 rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105 border-b-4 border-sky-400 glow-card">
+                        <div class="feature-card p-8 rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105 glow-card">
                             <div class="flex justify-center mb-4">
                                 <!-- Font Awesome Airplane Icon for Travel -->
-                                <i class="fa-solid fa-plane-departure text-sky-400 w-12 h-12 text-5xl"></i>
+                                <i class="fa-solid fa-plane-departure text-5xl" style="color: var(--accent);"></i>
                             </div>
                             <h3 class="bebas-neue text-2xl font-bold text-white mb-2">A Trip of a Lifetime</h3>
-                            <p class="text-gray-200">Your contribution will directly fund the senior trip to Israel, making this once-in-a-lifetime journey possible for every student.</p>
+                            <p class="text-gray-200" style="color: var(--text-muted);">Your contribution will directly fund the senior trip to Israel, making this once-in-a-lifetime journey possible for every student.</p>
                         </div>
-                        
+
                         <!-- Reason 2: Ma'aser Money (Piggy Bank Icon - Unchanged) -->
-                        <div class="bg-slate-800 p-8 rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105 border-b-4 border-sky-400 glow-card">
+                        <div class="feature-card p-8 rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105 glow-card">
                             <div class="flex justify-center mb-4">
                                 <!-- Font Awesome Piggy Bank Icon for Fund/Ma'aser -->
-                                <i class="fa-solid fa-piggy-bank text-sky-400 w-12 h-12 text-5xl"></i>
+                                <i class="fa-solid fa-piggy-bank text-5xl" style="color: var(--accent);"></i>
                             </div>
                             <h3 class="bebas-neue text-2xl font-bold text-white mb-2">Ma'aser Money </h3>
-                            <p class="text-gray-200">Your donation can be made using Ma'aser funds. This is a great way to fulfill the mitzvah of charity while supporting a meaningful cause.</p>
+                            <p class="text-gray-200" style="color: var(--text-muted);">Your donation can be made using Ma'aser funds. This is a great way to fulfill the mitzvah of charity while supporting a meaningful cause.</p>
                         </div>
-                        
+
                         <!-- Reason 3: Unforgettable Moments (Star of David Icon) -->
-                        <div class="bg-slate-800 p-8 rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105 border-b-4 border-sky-400 glow-card">
+                        <div class="feature-card p-8 rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105 glow-card">
                             <div class="flex justify-center mb-4">
                                 <!-- Font Awesome Star of David Icon for Israel connection/Moments -->
-                                <i class="fa-solid fa-star-of-david text-sky-400 w-12 h-12 text-5xl"></i>
+                                <i class="fa-solid fa-star-of-david text-5xl" style="color: var(--accent);"></i>
                             </div>
                             <h3 class="bebas-neue text-2xl font-bold text-white mb-2">Unforgettable Moments</h3>
-                            <p class="text-gray-200">We aim to create memorable senior events and graduation celebrations that will be cherished for a lifetime.</p>
+                            <p class="text-gray-200" style="color: var(--text-muted);">We aim to create memorable senior events and graduation celebrations that will be cherished for a lifetime.</p>
                         </div>
                     </div>
 
                     <!-- New Donation Affordability Text -->
-                    <div class="mt-16 max-w-3xl mx-auto p-6 bg-slate-900/60 rounded-xl border border-sky-400/50 shadow-inner">
-                        <p class="text-lg text-sky-200 font-semibold mb-2">Ensuring Every Student Can Attend</p>
-                        <p class="text-gray-300">
+                    <div class="mt-16 max-w-3xl mx-auto p-6 support-panel rounded-xl shadow-inner">
+                        <p class="text-lg font-semibold mb-2" style="color: var(--accent-alt);">Ensuring Every Student Can Attend</p>
+                        <p class="text-gray-300" style="color: var(--text-muted);">
                             A primary reason we need your generous donations is to cover the full costs of the trip and events, ensuring that financial constraints do not prevent any student from participating. Your support directly funds scholarships and subsidies for students who cannot afford the full cost, making this milestone year inclusive for the entire graduating class.
                         </p>
                     </div>
@@ -249,22 +372,22 @@
 
         <!-- Placeholder Pages - These will NOT be displayed unless specifically navigated to by a direct URL load of this file -->
         <section id="leaderboard" class="page-content py-16">
-            <div class="container mx-auto text-center p-4 bg-slate-800/80 rounded-2xl shadow-xl max-w-4xl">
-                <h2 class="bebas-neue text-4xl md:text-5xl lg:text-6xl font-bold text-sky-400 mb-6">Leaderboard </h2>
-                <p class="text-lg md:text-xl text-gray-300 mb-8">
+            <div class="container mx-auto text-center p-4" style="background: var(--surface); border-radius: 1.5rem; box-shadow: 0 18px 40px rgba(8, 13, 23, 0.4); border: 1px solid rgba(148, 163, 184, 0.12);">
+                <h2 class="bebas-neue text-4xl md:text-5xl lg:text-6xl font-bold mb-6" style="color: var(--accent-alt);">Leaderboard </h2>
+                <p class="text-lg md:text-xl mb-8" style="color: var(--text-muted);">
                     See who's leading the charge in supporting the Hillel Senior Fund! The top supporters will be listed here.
                 </p>
-                <div class="bg-slate-900 p-8 rounded-xl shadow-inner border border-gray-700">
-                    <p class="text-xl text-gray-400">Loading current rankings...</p>
+                <div class="p-8 rounded-xl shadow-inner" style="background: var(--surface-strong); border: 1px solid rgba(255, 255, 255, 0.08);">
+                    <p class="text-xl" style="color: var(--text-muted);">Loading current rankings...</p>
                     <img src="https://placehold.co/600x200/1f2937/d1d5db?text=Ranking+Table+Placeholder" alt="Leaderboard graphic" class="mx-auto rounded-lg shadow-xl mt-6">
                 </div>
             </div>
         </section>
 
         <section id="split" class="page-content py-16">
-            <div class="container mx-auto text-center p-4 bg-slate-800/80 rounded-2xl shadow-xl max-w-4xl">
-                <h2 class="bebas-neue text-4xl md:text-5xl lg:text-6xl font-bold text-sky-400 mb-6">Split the Pot</h2>
-                <p class="text-lg md:text-xl text-gray-300 mb-8">
+            <div class="container mx-auto text-center p-4" style="background: var(--surface); border-radius: 1.5rem; box-shadow: 0 18px 40px rgba(8, 13, 23, 0.4); border: 1px solid rgba(148, 163, 184, 0.12);">
+                <h2 class="bebas-neue text-4xl md:text-5xl lg:text-6xl font-bold mb-6" style="color: var(--accent-alt);">Split the Pot</h2>
+                <p class="text-lg md:text-xl mb-8" style="color: var(--text-muted);">
                     Get ready for our exciting raffle! More details coming soon on how to win big while supporting a great cause.
                 </p>
                 <img src="https://placehold.co/600x400/1f2937/d1d5db?text=Split+the+Pot+Details" alt="Split the Pot graphic" class="mx-auto rounded-lg shadow-xl">
@@ -272,9 +395,9 @@
         </section>
 
         <section id="spin" class="page-content py-16">
-            <div class="container mx-auto text-center p-4 bg-slate-800/80 rounded-2xl shadow-xl max-w-4xl">
-                <h2 class="bebas-neue text-4xl md:text-5xl lg:text-6xl font-bold text-sky-400 mb-6">Rolex Raffle</h2>
-                <p class="text-lg md:text-xl text-gray-300 mb-8">
+            <div class="container mx-auto text-center p-4" style="background: var(--surface); border-radius: 1.5rem; box-shadow: 0 18px 40px rgba(8, 13, 23, 0.4); border: 1px solid rgba(148, 163, 184, 0.12);">
+                <h2 class="bebas-neue text-4xl md:text-5xl lg:text-6xl font-bold mb-6" style="color: var(--accent-alt);">Rolex Raffle</h2>
+                <p class="text-lg md:text-xl mb-8" style="color: var(--text-muted);">
                     Try your luck with our virtual spin wheel! You could win amazing prizes just for donating.
                 </p>
                 <img src="https://placehold.co/600x400/1f2937/d1d5db?text=Spin+the+Wheel+Graphic" alt="Rolex Raffle graphic" class="mx-auto rounded-lg shadow-xl">
@@ -282,23 +405,23 @@
         </section>
 
         <section id="donate" class="page-content py-16">
-            <div class="container mx-auto text-center p-4 bg-slate-800/80 rounded-2xl shadow-xl max-w-4xl">
-                <h2 class="bebas-neue text-4xl md:text-5xl lg:text-6xl font-bold text-sky-400 mb-6">Donate Now</h2>
-                <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            <div class="container mx-auto text-center p-4" style="background: var(--surface); border-radius: 1.5rem; box-shadow: 0 18px 40px rgba(8, 13, 23, 0.4); border: 1px solid rgba(148, 163, 184, 0.12);">
+                <h2 class="bebas-neue text-4xl md:text-5xl lg:text-6xl font-bold mb-6" style="color: var(--accent-alt);">Donate Now</h2>
+                <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto" style="color: var(--text-muted);">
                     Every donation, big or small, helps us reach our goal. Thank you for your support!
                 </p>
                 <!-- Donation form/details would go here -->
-                <div class="bg-slate-900 p-8 rounded-xl shadow-xl max-w-lg mx-auto border-t-4 border-sky-400">
+                <div class="p-8 rounded-xl shadow-xl max-w-lg mx-auto" style="background: var(--surface-strong); border: 1px solid rgba(255, 255, 255, 0.1);">
                     <form>
                         <div class="mb-4">
-                            <label for="amount" class="block text-gray-200 text-sm font-bold mb-2 text-left">Donation Amount</label>
-                            <input type="number" id="amount" name="amount" placeholder="$100" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-900 leading-tight focus:outline-none focus:ring-2 focus:ring-sky-400">
+                            <label for="amount" class="block text-sm font-bold mb-2 text-left" style="color: var(--text-muted);">Donation Amount</label>
+                            <input type="number" id="amount" name="amount" placeholder="$100" class="shadow appearance-none rounded w-full py-3 px-4 input-field" />
                         </div>
                         <div class="mb-6">
-                            <label for="name" class="block text-gray-200 text-sm font-bold mb-2 text-left">Your Name (Optional)</label>
-                            <input type="text" id="name" name="name" placeholder="John Doe" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-900 leading-tight focus:outline-none focus:ring-2 focus:ring-sky-400">
+                            <label for="name" class="block text-sm font-bold mb-2 text-left" style="color: var(--text-muted);">Your Name (Optional)</label>
+                            <input type="text" id="name" name="name" placeholder="John Doe" class="shadow appearance-none rounded w-full py-3 px-4 input-field">
                         </div>
-                        <button type="submit" class="w-full py-3 rounded-full bg-sky-400 hover:bg-sky-500 text-slate-950 font-bold transition-colors duration-300 shadow-lg hover:shadow-xl">
+                        <button type="submit" class="w-full py-3 rounded-full accent-button font-bold transition-colors duration-300 shadow-lg hover:shadow-xl">
                             Submit Donation
                         </button>
                     </form>
@@ -309,30 +432,30 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-black/40 py-8 mt-auto shadow-[0_-5px_15px_rgba(0,0,0,0.5)]">
+    <footer class="glass-header py-8 mt-auto">
         <div class="container mx-auto px-4 text-center">
-            <h3 class="bebas-neue text-3xl font-bold text-sky-400 mb-4">Contact</h3>
+            <h3 class="bebas-neue text-3xl font-bold mb-4" style="color: var(--accent-alt);">Contact</h3>
             <!-- Contact section is now fully responsive, stacking on mobile -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 text-gray-400 mb-8">
                 <!-- Person 1 -->
-                <div>
+                <div class="contact-card">
                     <p class="font-bold text-white">Morris E.</p>
-                    <p>+1 (848)-282-6434</p>
+                    <p style="color: var(--text-muted);">+1 (848)-282-6434</p>
                 </div>
                 <!-- Person 2 -->
-                <div>
+                <div class="contact-card">
                     <p class="font-bold text-white">Daniel K.</p>
-                    <p>+1 (917) 858-0904</p>
+                    <p style="color: var(--text-muted);">+1 (917) 858-0904</p>
                 </div>
                 <!-- Person 3 -->
-                <div>
+                <div class="contact-card">
                     <p class="font-bold text-white">Saul S.</p>
-                    <p>+1 (929)-584-5753</p>
+                    <p style="color: var(--text-muted);">+1 (929)-584-5753</p>
                 </div>
             </div>
             <p class="text-sm text-gray-500 mt-8">
                 &copy; 2026 Hillel Senior Fund. All Rights Reserved.<br/>
-                Website created by <a href="https://setton-source-68177.web.app" target="_blank" class="text-sky-400 hover:text-sky-300 transition-colors">Saul Setton</a>
+                Website created by <a href="https://setton-source-68177.web.app" target="_blank" class="footer-link transition-colors">Saul Setton</a>
             </p>
         </div>
     </footer>
